@@ -1,34 +1,21 @@
 /*!
  * \author  Armand Leclercq
- * \file  mult.hh
+ * \file  maths/long/mult.hh
  * \date  Mon 18 Nov 2013 02:25:42 PM CET
  */
 
-#ifndef MULT_HH_
-# define MULT_HH_
-# include <double.hh>
-# include <long.hh>
+#ifndef MATHS_LONG_MULT_HH_
+# define MATHS_LONG_MULT_HH_
+# include <maths/long/type.hh>
 
 namespace maths
 {
-  template <typename lhs, typename rhs>
-  struct mult {};
-
-  template
-  <
-    long e1
-    , long e2
-    , unsigned long d1
-    , unsigned long d2
-    , unsigned long m1
-    , unsigned long m2
-  >
-  struct mult<Double<e1, d1, m1>, Double<e2, d2, m2>>
+  template <long v1, long v2>
+  struct mult<Long<v1>, Long<v2>>
   {
-  private:
-    enum { Mult = add<Long<m1>, Long<m2>>::type::value };
+    typedef Long<v1 * v2> type;
   };
 
 } /* maths */
 
-#endif /* !MULT_HH_ */
+#endif /* !MATHS_LONG_MULT_HH_ */

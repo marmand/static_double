@@ -13,4 +13,5 @@ namespace maths
   struct mult {};
 } /* maths */
 
+# include <maths/long/mult.hh>
 #endif /* !MULT_HH_ */
