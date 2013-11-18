@@ -7,4 +7,7 @@
 #ifndef LONG_HH_
 # define LONG_HH_
 # include "long/type.hh"
+# include "long/add.hh"
+# include "long/mult.hh"
+# include "long/pow.hh"
 #endif /* !LONG_HH_ */
