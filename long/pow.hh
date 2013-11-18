@@ -14,7 +14,7 @@ namespace maths
   template <long v1, long v2>
   struct pow<Long<v1>, Long<v2>>
   {
-    typedef mult<Long<v1>, pow<Long<v1>, Long<v2 - 1>>> type;
+    typedef typename mult<Long<v1>, typename pow<Long<v1>, Long<v2 - 1>>::type>::type type;
   };
 
   template <long v1>
