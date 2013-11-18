@@ -1,11 +1,11 @@
 /*!
 ** \author  armand
-** \file    double.hh
+** \file    double/type.hh
 ** \date    Sat 17 Aug 2013 12:21:20 PM CEST
 */
 
-#ifndef DOUBLE_HH_
-# define DOUBLE_HH_
+#ifndef DOUBLE_TYPE_HH_
+# define DOUBLE_TYPE_HH_
 # include <cmath>
 # include <digits.hh>
 
@@ -30,4 +30,4 @@ struct Double
 
 # define DOUBLE(Ent, Dec) Double<Ent, Dec, DIGITS(Dec)>
 
-#endif /* !DOUBLE_HH_ */
+#endif /* !DOUBLE_TYPE_HH_ */
