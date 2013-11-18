@@ -1,16 +1,28 @@
 /*!
  * \author  Armand Leclercq
- * \file  pow.hh
+ * \file  maths/long/pow.hh
  * \date  Sun 17 Nov 2013 05:36:19 PM CET
  */
 
-#ifndef POW_HH_
-# define POW_HH_
+#ifndef MATHS_LONG_POW_HH_
+# define MATHS_LONG_POW_HH_
+# include <maths/long/type.hh>
+# include <maths/mult.hh>
 
 namespace maths
 {
-  template <typename lhs, typename rhs>
-  struct pow {};
+  template <long v1, long v2>
+  struct pow<Long<v1>, Long<v2>>
+  {
+    typedef mult<Long<v1>, pow<Long<v1>, Long<v2 - 1>>> type;
+  };
+
+  template <long v1>
+  struct pow<Long<v1>, Long<0>>
+  {
+    typedef Long<1> type;
+  };
+
 } /* maths */
 
-#endif /* !POW_HH_ */
+#endif /* !MATHS_LONG_POW_HH_ */
