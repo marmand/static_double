@@ -19,8 +19,8 @@ namespace maths
   >
   : public compare
   <
-    Long<v2>
-    , Long<v1>
+    Long<v1>
+    , Long<v2>
     , (v1 < v2)
     , (v1 > v2)
     , false
