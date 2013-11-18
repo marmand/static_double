@@ -14,8 +14,8 @@ namespace maths
   template <long v1, long v2>
   struct min
   <
-    Long<v1>
-    , Long<v2>
+    Long<v2>
+    , Long<v1>
   >
   : public compare
   <
