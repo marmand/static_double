@@ -15,7 +15,7 @@ namespace maths
   struct add<Long<v1>, Long<v2>>
   {
     typedef Long<v1 + v2> type;
-  }
+  };
 
 } /* maths */
 
