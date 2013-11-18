@@ -8,13 +8,32 @@
 # define MATHS_LONG_POW_HH_
 # include <maths/long/type.hh>
 # include <maths/mult.hh>
+# include <maths/div.hh>
 
 namespace maths
 {
+  namespace internal
+  {
+    template <long v1, long v2, bool pos>
+    struct pow_impl {};
+
+    template <long v1, long v2>
+    struct pow_impl<v1, v2, true>
+    {
+      typedef typename mult<Long<v1>, typename pow<Long<v1>, Long<v2 - 1>>::type>::type type;
+    };
+
+    template <long v1, long v2>
+    struct pow_impl<v1, v2, false>
+    {
+      typedef typename div<Long<1>, typename pow<Long<v1>, Long<-v2 - 1>>::type>::type type;
+    };
+  } /* internal */
+
   template <long v1, long v2>
   struct pow<Long<v1>, Long<v2>>
+    : public internal::pow_impl<v1, v2, 0 <= v2>
   {
-    typedef typename mult<Long<v1>, typename pow<Long<v1>, Long<v2 - 1>>::type>::type type;
   };
 
   template <long v1>
