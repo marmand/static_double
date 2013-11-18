@@ -12,7 +12,12 @@
 namespace maths
 {
   template <long v1, long v2>
-  struct min : public compare
+  struct min
+  <
+    Long<v1>
+    , Long<v2>
+  >
+  : public compare
   <
     Long<v1>
     , Long<v2>
