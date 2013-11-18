@@ -13,4 +13,5 @@ namespace maths
   struct div {};
 } /* maths */
 
+# include <maths/long/div.hh>
 #endif /* !MATHS_DIV_HH_ */

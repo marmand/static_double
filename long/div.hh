@@ -6,6 +6,7 @@
 
 #ifndef MATHS_LONG_DIV_HH_
 # define MATHS_LONG_DIV_HH_
+# include <maths/long/type.hh>
 
 namespace maths
 {
