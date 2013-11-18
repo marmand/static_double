@@ -11,24 +11,11 @@
 namespace maths
 {
 
-  template
-  <
-    long e1
-    , unsigned long d1
-    , unsigned long m1
-    , long e2
-    , unsigned long d2
-    , unsigned long m2
-  >
-  struct add<Double<e1, d1, m1>, Double<e2, d2, m2>>
+  template <long v1, long v2>
+  struct add<Long<v1>, Long<v2>>
   {
-  private:
-    enum { Mult = max<Long<m1>, Long<m2>>::type::value };
-    enum { Dec = d1 + d2 };
-    enum { Ent = e1 + e2 + (Dec % Mult) };
-  public:
-    typedef Double<Ent, Dec, Mult> type;
-  };
+    typedef Long<v1 + v2> type;
+  }
 
 } /* maths */
 
