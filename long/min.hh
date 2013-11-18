@@ -14,13 +14,13 @@ namespace maths
   template <long v1, long v2>
   struct min
   <
-    Long<v2>
-    , Long<v1>
+    Long<v1>
+    , Long<v2>
   >
   : public compare
   <
-    Long<v1>
-    , Long<v2>
+    Long<v2>
+    , Long<v1>
     , (v1 < v2)
     , (v1 > v2)
     , false
