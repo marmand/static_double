@@ -1,11 +1,11 @@
 /*!
  * \author  Armand Leclercq
- * \file  add.hh
+ * \file  long/add.hh
  * \date  Mon 16 Sep 2013 01:30:24 PM CEST
  */
 
-#ifndef ADD_HH_
-# define ADD_HH_
+#ifndef LONG_ADD_HH_
+# define LONG_ADD_HH_
 # include <double.hh>
 # include <max.hh>
 
@@ -36,4 +36,4 @@ namespace maths
 
 } /* maths */
 
-#endif /* !ADD_HH_ */
+#endif /* !LONG_ADD_HH_ */
