@@ -1,19 +1,15 @@
 /*!
  * \author  Armand Leclercq
- * \file  long/add.hh
+ * \file  maths/long/add.hh
  * \date  Mon 16 Sep 2013 01:30:24 PM CEST
  */
 
-#ifndef LONG_ADD_HH_
-# define LONG_ADD_HH_
-# include <double.hh>
-# include <max.hh>
+#ifndef MATHS_LONG_ADD_HH_
+# define MATHS_LONG_ADD_HH_
+# include <maths/long/type.hh>
 
 namespace maths
 {
-
-  template <typename Lhs, typename Rhs>
-  struct add;
 
   template
   <
@@ -36,4 +32,4 @@ namespace maths
 
 } /* maths */
 
-#endif /* !LONG_ADD_HH_ */
+#endif /* !MATHS_LONG_ADD_HH_ */
