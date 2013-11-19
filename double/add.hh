@@ -8,6 +8,7 @@
 # define MATHS_DOUBLE_ADD_HH_
 # include <maths/double/type.hh>
 # include <maths/max.hh>
+# include <maths/div.hh>
 # include <maths/mod.hh>
 # include <maths/pow.hh>
 
@@ -31,8 +32,15 @@ namespace maths
                    typename maths::add<Long<d1>, Long<d2>>::type
                    , typename maths::pow<Long<10>, Long<Mult>>::type
                  >::type::value
-          };
-    enum { Ent = e1 + e2 + (Dec % Mult) };
+         };
+    enum { Ent = maths::add<typename maths::add<Long<e1>, Long<e2>>::type
+                            , typename maths::div
+                              <
+                                typename maths::add<Long<d1>, Long<d2>>::type
+                                , typename maths::pow<Long<10>, Long<Mult>>::type
+                              >::type
+                            >::type::value
+         };
   public:
     typedef Double<Ent, Dec, Mult> type;
   };
