@@ -13,4 +13,5 @@ namespace maths
   struct sub {};
 } /* maths */
 
+# include <maths/long/sub.hh>
 #endif /* !MATHS_SUB_HH_ */
