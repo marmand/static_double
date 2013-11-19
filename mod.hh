@@ -13,4 +13,5 @@ namespace maths
   struct mod {};
 } /* maths */
 
+# include <maths/long/mod.hh>
 #endif /* !MATHS_MOD_HH_ */
