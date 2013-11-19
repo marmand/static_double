@@ -14,4 +14,5 @@ namespace maths
 } /* maths */
 
 # include <maths/long/sub.hh>
+# include <maths/double/sub.hh>
 #endif /* !MATHS_SUB_HH_ */
