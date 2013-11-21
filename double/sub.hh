@@ -7,7 +7,10 @@
 #ifndef MATHS_DOUBLE_SUB_HH_
 # define MATHS_DOUBLE_SUB_HH_
 # include <maths/double/type.hh>
+# include <maths/max.hh>
 # include <maths/add.hh>
+# include <maths/sub.hh>
+# include <maths/pow.hh>
 
 namespace maths
 {
@@ -22,7 +25,13 @@ namespace maths
   >
   struct sub<Double<e1, d1, m1>, Double<e2, d2, m2>>
   {
-    typedef typename maths::add<Double<e1, d1, m1>, Double<-e2, d2, m2>>::type type;
+  private:
+    enum { Mult = maths::max<Long<m1>, Long<m2>>::type::value };
+    enum { Over = maths::pow<Long<10>, typename maths::add<Long<Mult>, Long<1>>::type>::type::value };
+    enum { Dec = maths::sub<Long<d1>, Long<d2>>::type::value };
+    enum { Ent = 0 };
+  public:
+    typedef Double<Ent, Dec, Mult> type;
   };
 } /* maths */
 
