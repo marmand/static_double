@@ -34,13 +34,16 @@ namespace maths
                     <
                       typename maths::add
                       <
-                        typename maths::mult<Long<d1>, typename maths::pow<Long<10>, Long<m1>>::type>::type
+/*                        typename maths::mult<Long<d1>, typename maths::pow<Long<10>, Long<m1>>::type>::type*/
+                        Long<d1>
                         , Long<Over>
                       >::type
                       , typename maths::add
                         <
-                          typename maths::mult<Long<d2>, typename maths::pow<Long<10>, Long<m2>>::type>::type
-                          , Long<Over>
+                          Long<d2>
+                          , Long<0>
+/*                          typename maths::mult<Long<d2>, typename maths::pow<Long<10>, Long<m2>>::type>::type*/
+/*                          , Long<Over>*/
                         >::type
                     >::type::value
          };
