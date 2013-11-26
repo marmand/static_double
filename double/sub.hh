@@ -29,29 +29,25 @@ namespace maths
   {
   private:
     enum { Mult = maths::max<Long<m1>, Long<m2>>::type::value };
-    enum { Over = maths::pow<Long<10>, typename maths::add<Long<Mult>, Long<1>>::type>::type::value };
-    enum { PreDec = maths::sub
-                    <
-                      typename maths::add
-                      <
-/*                        typename maths::mult<Long<d1>, typename maths::pow<Long<10>, Long<m1>>::type>::type*/
-                        Long<d1>
-                        , Long<Over>
-                      >::type
-                      , typename maths::add
-                        <
-                          Long<d2>
-                          , Long<0>
-/*                          typename maths::mult<Long<d2>, typename maths::pow<Long<10>, Long<m2>>::type>::type*/
-/*                          , Long<Over>*/
-                        >::type
-                    >::type::value
+    enum { D = maths::sub
+               <
+                 typename maths::add
+                 <
+                   Long<d1>
+                   , typename maths::pow<Long<10>, Long<Mult>>::type
+                 >::type
+                 , Long<d2>
+               >::type::value
          };
-    enum { Dec = maths::mod<Long<PreDec>, Long<Over>>::type::value };
+    enum { Dec = maths::mod<Long<D>, typename maths::pow<Long<10>, Long<Mult>>::type>::type::value };
     enum { Ent = maths::add
                  <
-                   typename maths::sub<Long<e1>, typename maths::add<Long<1>, Long<e1>>::type>::type
-                   , typename maths::div<Long<PreDec>, Long<Over>>::type
+                   typename maths::sub
+                   <
+                     Long<e1>
+                     , typename maths::add<Long<1>, Long<e2>>::type
+                   >::type
+                   , typename maths::div<Long<D>, typename maths::pow<Long<10>, Long<Mult>>::type>::type
                  >::type::value
          };
   public:
