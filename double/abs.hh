@@ -10,27 +10,30 @@
 
 namespace maths
 {
-  namespace
+  namespace double_
   {
-    template <long e, unsigned long d, unsigned long m, bool neg>
-    struct double_abs_impl {};
-
-    template <long e, unsigned long d, unsigned long m>
-    struct double_abs_impl<e, d, m, true>
+    namespace abs_
     {
-      typedef Double<-e, d, m> type;
-    };
+      template <long e, unsigned long d, unsigned long m, bool neg>
+      struct impl {};
 
-    template <long e, unsigned long d, unsigned long m>
-    struct double_abs_impl<e, d, m, false>
-    {
-      typedef Double<e, d, m> type;
-    };
-  } /*  */
+      template <long e, unsigned long d, unsigned long m>
+      struct impl<e, d, m, true>
+      {
+        typedef Double<-e, d, m> type;
+      };
+
+      template <long e, unsigned long d, unsigned long m>
+      struct impl<e, d, m, false>
+      {
+        typedef Double<e, d, m> type;
+      };
+    } /* abs_ */
+  } /*  double_ */
 
   template <long e, unsigned long d, unsigned long m>
   struct abs<Double<e, d, m>>
-    : public double_abs_impl<e, d, m, e < 0>
+    : public double_::abs_::impl<e, d, m, e < 0>
   {
   };
 } /* maths */
