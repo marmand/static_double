@@ -16,6 +16,21 @@
 
 namespace maths
 {
+  namespace double_
+  {
+    namespace sub_
+    {
+      template
+      <
+        unsigned long d1
+        , unsigned long d2
+        , unsigned long m1
+        , unsigned long m2
+        , bool inf
+      >
+      struct d {};
+    } /* sub_ */
+  } /* double_ */
   template
   <
     long e1
