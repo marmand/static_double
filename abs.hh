@@ -13,4 +13,6 @@ namespace maths
   struct abs {};
 } /* maths */
 
+# include <maths/long/abs.hh>
+# include <maths/double/abs.hh>
 #endif /* !MATHS_ABS_HH_ */
