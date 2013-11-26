@@ -10,27 +10,30 @@
 
 namespace maths
 {
-  namespace
+  namespace long_
   {
-    template <long v, bool neg>
-    struct long_abs_impl {};
-
-    template <long v>
-    struct long_abs_impl<v, true>
+    namespace abs_
     {
-      typedef Long<-v> type;
-    };
+      template <long v, bool neg>
+      struct impl {};
 
-    template <long v>
-    struct long_abs_impl<v, false>
-    {
-      typedef Long<v> type;
-    };
-  } /*  */
+      template <long v>
+      struct impl<v, true>
+      {
+        typedef Long<-v> type;
+      };
+
+      template <long v>
+      struct impl<v, false>
+      {
+        typedef Long<v> type;
+      };
+    } /* abs_ */
+  } /*  long_ */
 
   template <long v>
   struct abs<Long<v>>
-    : public long_abs_impl<v, v < 0>
+    : public long_::abs_::impl<v, v < 0>
   {
   };
 } /* maths */
