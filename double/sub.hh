@@ -26,9 +26,74 @@ namespace maths
         , unsigned long d2
         , unsigned long m1
         , unsigned long m2
+        , unsigned long Mult
         , bool inf
       >
       struct d {};
+
+      template
+      <
+        unsigned long d1
+        , unsigned long d2
+        , unsigned long m1
+        , unsigned long m2
+        , unsigned long Mult
+      >
+      struct d<d1, d2, m1, m2, Mult, true>
+      {
+        typedef typename maths::sub
+                <
+                  typename maths::add
+                  <
+                    typename maths::mult
+                    <
+                      Long<d1>
+                      , typename maths::pow
+                        <
+                          Long<10>
+                          , typename maths::abs<typename maths::sub<Long<m1>, Long<m2>>::type>::type
+                        >::type
+                    >::type
+                    , typename maths::pow<Long<10>, Long<Mult>>::type
+                  >::type
+                  , Long<d2>
+                >::type
+                type;
+      };
+
+      template
+      <
+        unsigned long d1
+        , unsigned long d2
+        , unsigned long m1
+        , unsigned long m2
+        , unsigned long Mult
+      >
+      struct d<d1, d2, m1, m2, Mult, false>
+      {
+        typedef typename maths::sub
+                <
+                  typename maths::add
+                  <
+                    Long<d1>
+                    , typename maths::pow<Long<10>, Long<Mult>>::type
+                  >::type
+                  , typename maths::mult
+                    <
+                      Long<d2>
+                      , typename maths::pow
+                        <
+                          Long<10>
+                          , typename maths::abs<typename maths::sub
+                                                <
+                                                  Long<m1>
+                                                  , Long<m2>
+                                                >::type>::type
+                        >::type
+                    >::type
+                >::type
+                type;
+      };
     } /* sub_ */
   } /* double_ */
   template
@@ -44,16 +109,7 @@ namespace maths
   {
   private:
     enum { Mult = maths::max<Long<m1>, Long<m2>>::type::value };
-    enum { D = maths::sub
-               <
-                 typename maths::add
-                 <
-                   Long<d1>
-                   , typename maths::pow<Long<10>, Long<Mult>>::type
-                 >::type
-                 , Long<d2>
-               >::type::value
-         };
+    enum { D = double_::sub_::d<d1, d2, m1, m2, Mult, m1 < m2>::type::value };
     enum { Dec = maths::mod<Long<D>, typename maths::pow<Long<10>, Long<Mult>>::type>::type::value };
     enum { Ent = maths::add
                  <
