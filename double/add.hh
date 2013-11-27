@@ -25,10 +25,13 @@ namespace maths
       /*!
        * This structure compute a temporary variables on condition.
        *
-       * if m1 < m2                         \n
-       *   d = d1 * 10 ^ |m1 - m2| + d2;    \n
-       * else                               \n
-       *   d = d1 + d2 * 10 ^ |m1 - m2|;    \n
+       * \code
+         if (m1 < m2)
+           d = d1 * 10 ^ |m1 - m2| + d2;
+         else
+           d = d1 + d2 * 10 ^ |m1 - m2|;
+         \endcode
+       *
        */
       template
       <
