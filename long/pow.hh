@@ -7,7 +7,7 @@
 #ifndef MATHS_LONG_POW_HH_
 # define MATHS_LONG_POW_HH_
 # include <maths/long/type.hh>
-# include <maths/mult.hh>
+# include <maths/mul.hh>
 # include <maths/div.hh>
 
 namespace maths
@@ -22,7 +22,7 @@ namespace maths
       template <long v1, long v2>
       struct impl<v1, v2, true>
       {
-        typedef typename mult<Long<v1>, typename pow<Long<v1>, Long<v2 - 1>>::type>::type type;
+        typedef typename mul<Long<v1>, typename pow<Long<v1>, Long<v2 - 1>>::type>::type type;
       };
 
       template <long v1, long v2>

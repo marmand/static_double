@@ -10,7 +10,7 @@
 # include <maths/max.hh>
 # include <maths/add.hh>
 # include <maths/sub.hh>
-# include <maths/mult.hh>
+# include <maths/mul.hh>
 # include <maths/mod.hh>
 # include <maths/pow.hh>
 
@@ -45,7 +45,7 @@ namespace maths
                 <
                   typename maths::add
                   <
-                    typename maths::mult
+                    typename maths::mul
                     <
                       Long<d1>
                       , typename maths::pow
@@ -78,7 +78,7 @@ namespace maths
                     Long<d1>
                     , typename maths::pow<Long<10>, Long<Mult>>::type
                   >::type
-                  , typename maths::mult
+                  , typename maths::mul
                     <
                       Long<d2>
                       , typename maths::pow

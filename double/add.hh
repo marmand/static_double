@@ -11,7 +11,7 @@
 # include <maths/abs.hh>
 # include <maths/add.hh>
 # include <maths/sub.hh>
-# include <maths/mult.hh>
+# include <maths/mul.hh>
 # include <maths/div.hh>
 # include <maths/mod.hh>
 # include <maths/pow.hh>
@@ -54,7 +54,7 @@ namespace maths
       {
         typedef typename maths::add
                 <
-                  typename maths::mult
+                  typename maths::mul
                   <
                     Long<d1>
                     , typename maths::pow
@@ -80,7 +80,7 @@ namespace maths
         typedef typename maths::add
                 <
                   Long<d1>
-                  , typename maths::mult
+                  , typename maths::mul
                     <
                       Long<d2>
                       , typename maths::pow
