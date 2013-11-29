@@ -11,6 +11,7 @@
 # include <maths/add.hh>
 # include <maths/sub.hh>
 # include <maths/mul.hh>
+# include <maths/div.hh>
 # include <maths/mod.hh>
 # include <maths/pow.hh>
 
