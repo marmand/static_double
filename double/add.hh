@@ -102,8 +102,12 @@ namespace maths
     , long e2
     , unsigned long d2
     , unsigned long m2
+    , unsigned long s1
+    , unsigned long s2
+    , bool n1
+    , bool n2
   >
-  struct add<Double<e1, d1, m1>, Double<e2, d2, m2>>
+  struct add<Double<e1, d1, m1, s1, n1>, Double<e2, d2, m2, s2, n2>>
   {
   private:
     enum { Mult = maths::max<Long<m1>, Long<m2>>::type::value };
@@ -119,8 +123,10 @@ namespace maths
          };
     /// Dec = d % (10 ^ Mult);
     enum { Dec = maths::mod<Long<D>, typename maths::pow<Long<10>, Long<Mult>>::type>::type::value };
+    enum { Sign = 0 };
+    enum { Null = 0 };
   public:
-    typedef Double<Ent, Dec, Mult> type;
+    typedef Double<Ent, Dec, Mult, Sign, Null> type;
   };
 } /* maths */
 

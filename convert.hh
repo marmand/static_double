@@ -14,8 +14,8 @@ namespace maths
   template <typename e>
   struct convert {};
 
-  template <long e, unsigned long d, unsigned long m>
-  struct convert<Double<e, d, m>>
+  template <long e, unsigned long d, unsigned long m, unsigned long s, bool n>
+  struct convert<Double<e, d, m, s, n>>
   {
     typedef Long<e> type;
   };
@@ -23,7 +23,7 @@ namespace maths
   template <long v>
   struct convert<Long<v>>
   {
-    typedef Double<v, 0, 1> type;
+    typedef Double<v, 0, 1, v < 0 ? 2 : 1, v < 0> type;
   };
 } /* maths */
 

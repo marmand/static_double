@@ -23,8 +23,12 @@ namespace maths
     , unsigned long d2
     , unsigned long m1
     , unsigned long m2
+    , unsigned long s1
+    , unsigned long s2
+    , bool n1
+    , bool n2
   >
-  struct mul<Double<e1, d1, m1>, Double<e2, d2, m2>>
+  struct mul<Double<e1, d1, m1, s1, n1>, Double<e2, d2, m2, s2, n2>>
   {
   private:
     enum { CommaLess = maths::mul
@@ -62,8 +66,10 @@ namespace maths
                    , typename maths::pow<Long<10>, Long<Mult>>::type
                  >::type::value
          };
+    enum { Sign = 0 };
+    enum { Null = 0 };
   public:
-    typedef Double<Ent, Dec, Mult> type;
+    typedef Double<Ent, Dec, Mult, Sign, Null> type;
   };
 
   /*!
@@ -75,8 +81,12 @@ namespace maths
     , unsigned long d
     , unsigned long m1
     , unsigned long m2
+    , unsigned long s1
+    , unsigned long s2
+    , bool n1
+    , bool n2
   >
-  struct mul<Double<0, 0, m1>, Double<e, d, m2>>
+  struct mul<Double<0, 0, m1, s1, n1>, Double<e, d, m2, s2, n2>>
   {
     typedef DOUBLE(0, 0) type;
   };
@@ -89,8 +99,12 @@ namespace maths
     , unsigned long d
     , unsigned long m1
     , unsigned long m2
+    , unsigned long s1
+    , unsigned long s2
+    , bool n1
+    , bool n2
   >
-  struct mul<Double<e, d, m1>, Double<0, 0, m2>>
+  struct mul<Double<e, d, m1, s1, n1>, Double<0, 0, m2, s2, n2>>
   {
     typedef DOUBLE(0, 0) type;
   };

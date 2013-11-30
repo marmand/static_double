@@ -69,6 +69,13 @@ namespace maths
   } /* double_ */
 } /* maths */
 
+/*!
+ * \class Double
+ * \brief Represent a double in static world
+ *
+ * This class aims to represent doubles as types. I choosed not to used C++11
+ * constexpr in order to test my adaptability to the static world
+ */
 template
 <
   long entiere
