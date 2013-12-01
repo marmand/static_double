@@ -7,6 +7,7 @@
 #ifndef MATHS_DOUBLE_MUL_HH_
 # define MATHS_DOUBLE_MUL_HH_
 # include <maths/double/type.hh>
+# include <maths/abs.hh>
 # include <maths/add.hh>
 # include <maths/mul.hh>
 # include <maths/div.hh>
@@ -31,6 +32,7 @@ namespace maths
   struct mul<Double<e1, d1, m1, s1, n1>, Double<e2, d2, m2, s2, n2>>
   {
   private:
+    /// (e1 * 10 ^ m1 + d1) * (e2 * 10 ^ m2 + d2)
     enum { CommaLess = maths::mul
                        <
                          typename maths::add
@@ -53,21 +55,27 @@ namespace maths
                            >::type
                        >::type::value
          };
+    /// m = m1 + m2
     enum { Mult = maths::add<Long<m1>, Long<m2>>::type::value };
+    /// d = CommaLess % 10 ^ m
     enum { Dec = maths::mod
                  <
                    Long<CommaLess>
                    , typename maths::pow<Long<10>, Long<Mult>>::type
                  >::type::value
          };
-    enum { Ent = maths::div
+    /// e = | CommaLess / 10 ^ m |
+    enum { Ent = maths::abs
                  <
-                   Long<CommaLess>
-                   , typename maths::pow<Long<10>, Long<Mult>>::type
+                   typename maths::div
+                   <
+                     Long<CommaLess>
+                     , typename maths::pow<Long<10>, Long<Mult>>::type
+                   >::type
                  >::type::value
          };
-    enum { Sign = 0 };
-    enum { Null = 0 };
+    enum { Sign = Ent < 0};
+    enum { Null = Ent == 0 };
   public:
     typedef Double<Ent, Dec, Mult, Sign, Null> type;
   };
