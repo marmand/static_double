@@ -89,6 +89,9 @@ struct Double
 {
 };
 
+/// Represent a double as Ent.Dec
 # define DOUBLE(Ent, Dec) Double<Ent, Dec, DIGITS(Dec), DIGITS(Ent), Ent == 0>
+/// Represent a double as Ent + 0.Dec * 10 ^ -Exp
+# define SMALL_DOUBLE(Ent, Dec, Exp) Double<Ent, Dec, Exp + DIGITS(Dec), DIGITS(Ent), Ent == 0>
 
 #endif /* !DOUBLE_TYPE_HH_ */
