@@ -38,6 +38,7 @@ namespace maths
         enum { Dec = d };
         enum { Mult = m };
         enum { Sign = e < 0 };
+        enum { Null = false };
         operator double() const
         {
           return Sign
@@ -58,6 +59,7 @@ namespace maths
         enum { Dec = d };
         enum { Mult = m };
         enum { Sign = s > 1 };
+        enum { Null = true };
         operator double() const
         {
           return Sign
