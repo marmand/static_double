@@ -91,9 +91,18 @@ struct Double
 {
 };
 
-/// Represent a double as Ent.Dec
-# define DOUBLE(Ent, Dec) Double<Ent, Dec, DIGITS(Dec), DIGITS(Ent), Ent == 0>
 /// Represent a double as Ent + 0.Dec * 10 ^ -Exp
-# define SMALL_DOUBLE(Ent, Dec, Exp) Double<Ent, Dec, Exp + DIGITS(Dec), DIGITS(Ent), Ent == 0>
+# define SMALL_DOUBLE(Ent, Dec, Exp)            \
+  Double                                        \
+  <                                             \
+    (Ent)                                       \
+    , (Dec)                                     \
+    , (Exp + DIGITS(Dec))                       \
+    , (Ent == 0 ? DIGITS(Ent) > 1 : Ent < 0)    \
+    , (Ent == 0)                                \
+  >
+
+/// Represent a double as Ent.Dec
+# define DOUBLE(Ent, Dec) SMALL_DOUBLE(Ent, Dec, 0)
 
 #endif /* !DOUBLE_TYPE_HH_ */
