@@ -92,6 +92,7 @@ struct Double
 };
 
 /// Represent a double as Ent + 0.Dec * 10 ^ -Exp
+/// \todo Rename this macro
 # define SMALL_DOUBLE(Ent, Dec, Exp)            \
   Double                                        \
   <                                             \
