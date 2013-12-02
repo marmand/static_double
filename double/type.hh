@@ -20,8 +20,8 @@ namespace maths
         long e
         , unsigned long d
         , unsigned long m
-        , unsigned long size
-        , bool null
+        , bool n
+        , bool z
       >
       struct impl {};
 
@@ -30,18 +30,18 @@ namespace maths
         long e
         , unsigned long d
         , unsigned long m
-        , unsigned long s
+        , bool n
       >
-      struct impl<e, d, m, s, false>
+      struct impl<e, d, m, n, false>
       {
         enum { Ent = e };
         enum { Dec = d };
         enum { Mult = m };
-        enum { Sign = e < 0 };
-        enum { Null = false };
+        enum { Neg = n };
+        enum { Zero = false };
         operator double() const
         {
-          return Sign
+          return Neg
             ? Ent - (Dec / std::pow(10.0, Mult))
             : Ent + (Dec / std::pow(10.0, Mult));
         }
@@ -51,18 +51,18 @@ namespace maths
         long e
         , unsigned long d
         , unsigned long m
-        , unsigned long s
+        , bool n
       >
-      struct impl<e, d, m, s, true>
+      struct impl<e, d, m, n, true>
       {
         enum { Ent = e };
         enum { Dec = d };
         enum { Mult = m };
-        enum { Sign = s > 1 };
-        enum { Null = true };
+        enum { Neg = n };
+        enum { Zero = true };
         operator double() const
         {
-          return Sign
+          return Neg
             ? Ent - (Dec / std::pow(10.0, Mult))
             : Ent + (Dec / std::pow(10.0, Mult));
         }
@@ -83,11 +83,11 @@ template
   long entiere
   , unsigned long decimal
   , unsigned long mult
-  , unsigned long size
-  , bool null
+  , bool neg
+  , bool zero
 >
 struct Double
-  : public maths::double_::type_::impl<entiere, decimal, mult, size, null>
+  : public maths::double_::type_::impl<entiere, decimal, mult, neg, zero>
 {
 };
 
