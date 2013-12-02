@@ -16,6 +16,69 @@
 
 namespace maths
 {
+  namespace double_
+  {
+    namespace mul_
+    {
+      /*!
+       * \brief This computes the value of the Double in complete Long
+       * representation.
+       *
+       * This structure computes the value of the Double diven as template
+       * parameter as a single long, in order to make multiplication easier.
+       *
+         \code
+         if (s)
+           v = e * 10 ^ m - d;
+         else
+           v = e * 10 ^ m + d;
+         \endcode
+       *
+       */
+      template <typename T>
+      struct shifted {};
+
+      template
+      <
+        long e
+        , unsigned long d
+        , unsigned long m
+        , unsigned long s
+        , bool n
+      >
+      struct shifted<Double<e, d, m, s, n>>
+        : public maths::add
+                 <
+                   typename maths::mul
+                   <
+                     Long<e>
+                     , typename maths::pow<Long<10>, Long<m>>::type
+                   >::type
+                   , Long<d>
+                 >
+      {
+      };
+      template
+      <
+        long e
+        , unsigned long d
+        , unsigned long m
+        , bool n
+      >
+      struct shifted<Double<e, d, m, true, n>>
+        : public maths::sub
+                 <
+                   typename maths::mul
+                   <
+                     Long<e>
+                     , typename maths::pow<Long<10>, Long<m>>::type
+                   >::type
+                   , Long<d>
+                 >
+      {
+      };
+    } /* mul_ */
+  } /* double_ */
   template
   <
     long e1
