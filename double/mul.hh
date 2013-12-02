@@ -104,11 +104,14 @@ namespace maths
          };
     /// m = m1 + m2
     enum { Mult = maths::add<Long<m1>, Long<m2>>::type::value };
-    /// d = CommaLess % 10 ^ m
-    enum { Dec = maths::mod
+    /// d = | CommaLess % 10 ^ m |
+    enum { Dec = maths::abs
                  <
-                   Long<CommaLess>
-                   , typename maths::pow<Long<10>, Long<Mult>>::type
+                   typename maths::mod
+                     <
+                       Long<CommaLess>
+                       , typename maths::pow<Long<10>, Long<Mult>>::type
+                     >::type
                  >::type::value
          };
     /// e = | CommaLess / 10 ^ m |
