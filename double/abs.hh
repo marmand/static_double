@@ -20,13 +20,13 @@ namespace maths
       template <long e, unsigned long d, unsigned long m, bool n, bool z>
       struct impl<e, d, m, n, z, true>
       {
-        typedef Double<-e, d, m, n, z> type;
+        typedef Double<-e, d, m, false, z> type;
       };
 
       template <long e, unsigned long d, unsigned long m, bool n, bool z>
       struct impl<e, d, m, n, z, false>
       {
-        typedef Double<e, d, m, n, z> type;
+        typedef Double<e, d, m, false, z> type;
       };
     } /* abs_ */
   } /*  double_ */
@@ -34,7 +34,7 @@ namespace maths
   /// \todo Check that abs update correctly all the different fields
   template <long e, unsigned long d, unsigned long m, bool n, bool z>
   struct abs<Double<e, d, m, n, z>>
-    : public double_::abs_::impl<e, d, m, n, z, e < 0>
+    : public double_::abs_::impl<e, d, m, n, z, n>
   {
   };
 } /* maths */
