@@ -95,27 +95,11 @@ namespace maths
   struct mul<Double<e1, d1, m1, s1, n1>, Double<e2, d2, m2, s2, n2>>
   {
   private:
-    /// (e1 * 10 ^ m1 + d1) * (e2 * 10 ^ m2 + d2)
+    /// CommaLess = (e1 * 10 ^ m1 +/- d1) * (e2 * 10 ^ m2 +/- d2)
     enum { CommaLess = maths::mul
                        <
-                         typename maths::add
-                         <
-                           typename maths::mul
-                           <
-                             Long<e1>
-                             , typename maths::pow<Long<10>, Long<m1>>::type
-                           >::type
-                           , Long<d1>
-                         >::type
-                         , typename maths::add
-                           <
-                             typename maths::mul
-                             <
-                               Long<e2>
-                               , typename maths::pow<Long<10>, Long<m2>>::type
-                             >::type
-                             , Long<d2>
-                           >::type
+                         typename double_::mul_::shifted<Double<e1, d1, m1, s1, n1>>::type
+                         , typename double_::mul_::shifted<Double<e2, d2, m2, s2, n2>>::type
                        >::type::value
          };
     /// m = m1 + m2
