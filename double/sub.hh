@@ -107,12 +107,12 @@ namespace maths
         , unsigned long d2
         , unsigned long m1
         , unsigned long m2
-        , unsigned long s1
-        , unsigned long s2
         , bool n1
         , bool n2
+        , bool z1
+        , bool z2
       >
-      struct dist<Double<e1, d1, m1, s1, n1>, Double<e2, d2, m2, s2, n2>>
+      struct dist<Double<e1, d1, m1, n1, z1>, Double<e2, d2, m2, n2, z2>>
       {
       private:
         enum { Mult = maths::max<Long<m1>, Long<m2>>::type::value };
@@ -128,10 +128,10 @@ namespace maths
                        , typename maths::div<Long<D>, typename maths::pow<Long<10>, Long<Mult>>::type>::type
                      >::type::value
              };
-        enum { Sign = 0 };
-        enum { Null = 0 };
+        enum { Neg = 0 };
+        enum { Zero = 0 };
       public:
-        typedef Double<Ent, Dec, Mult, Sign, Null> type;
+        typedef Double<Ent, Dec, Mult, Neg, Zero> type;
       };
 
       template <typename lhs, typename rhs, bool first_inf>
@@ -145,17 +145,17 @@ namespace maths
         , unsigned long d2
         , unsigned long m1
         , unsigned long m2
-        , unsigned long s1
-        , unsigned long s2
         , bool n1
         , bool n2
+        , bool z1
+        , bool z2
       >
-      struct impl<Double<e1, d1, m1, s1, n1>, Double<e2, d2, m2, s2, n2>, true>
+      struct impl<Double<e1, d1, m1, n1, z1>, Double<e2, d2, m2, n2, z2>, true>
       {
       private:
-        typedef typename dist<Double<e2, d2, m2, s2, n2>, Double<e1, d1, m1, s1, n1>>::type tmp;
+        typedef typename dist<Double<e2, d2, m2, n2, z2>, Double<e1, d1, m1, n1, z1>>::type tmp;
       public:
-        typedef Double<-tmp::Ent, tmp::Dec, tmp::Mult, 0, 0> type;
+        typedef Double<-tmp::Ent, tmp::Dec, tmp::Mult, !tmp::Neg, tmp::Zero> type;
       };
 
       template
@@ -166,13 +166,13 @@ namespace maths
         , unsigned long d2
         , unsigned long m1
         , unsigned long m2
-        , unsigned long s1
-        , unsigned long s2
         , bool n1
         , bool n2
+        , bool z1
+        , bool z2
       >
-      struct impl<Double<e1, d1, m1, s1, n1>, Double<e2, d2, m2, s2, n2>, false>
-        : public dist<Double<e1, d1, m1, s1, n1>, Double<e2, d2, m2, s2, n2>>
+      struct impl<Double<e1, d1, m1, n1, z1>, Double<e2, d2, m2, n2, z2>, false>
+        : public dist<Double<e1, d1, m1, n1, z1>, Double<e2, d2, m2, n2, z2>>
       {
       };
     } /* sub_ */
@@ -185,13 +185,13 @@ namespace maths
     , unsigned long d2
     , unsigned long m1
     , unsigned long m2
-    , unsigned long s1
-    , unsigned long s2
     , bool n1
     , bool n2
+    , bool z1
+    , bool z2
   >
-  struct sub<Double<e1, d1, m1, s1, n1>, Double<e2, d2, m2, s2, n2>>
-    : public double_::sub_::impl<Double<e1, d1, m1, s1, n1>, Double<e2, d2, m2, s2, n2>, e1 < e2>
+  struct sub<Double<e1, d1, m1, n1, z1>, Double<e2, d2, m2, n2, z2>>
+    : public double_::sub_::impl<Double<e1, d1, m1, n1, z1>, Double<e2, d2, m2, n2, z2>, e1 < e2>
   {
   };
 } /* maths */
