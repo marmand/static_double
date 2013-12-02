@@ -77,6 +77,34 @@ namespace maths
                  >
       {
       };
+
+      template <typename T, bool neg>
+      struct impl {};
+
+      template
+      <
+        long e
+        , unsigned long d
+        , unsigned long m
+        , bool n
+        , bool z
+      >
+      struct impl<Double<e, d, m, n, z>, true>
+      {
+        typedef Double<-e, d, m, n, z> type;
+      };
+      template
+      <
+        long e
+        , unsigned long d
+        , unsigned long m
+        , bool n
+        , bool z
+      >
+      struct impl<Double<e, d, m, n, z>, false>
+      {
+        typedef Double<e, d, m, n, z> type;
+      };
     } /* mul_ */
   } /* double_ */
   template
@@ -124,10 +152,10 @@ namespace maths
                    >::type
                  >::type::value
          };
-    enum { Neg = Ent < 0};
+    enum { Neg = n1 ^ n2};
     enum { Zero = Ent == 0 };
   public:
-    typedef Double<Ent, Dec, Mult, Neg, Zero> type;
+    typedef typename double_::mul_::impl<Double<Ent, Dec, Mult, Neg, Zero>, Neg>::type type;
   };
 
   /*!
