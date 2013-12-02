@@ -94,6 +94,7 @@ namespace maths
       };
     } /* add_ */
   } /* double_ */
+  /// \todo Check If add doesn't break n and z meanings.
   template
   <
     long e1
