@@ -19,16 +19,16 @@ namespace maths
     , unsigned long d2
     , unsigned long m1
     , unsigned long m2
-    , unsigned long s1
-    , unsigned long s2
     , bool n1
     , bool n2
+    , bool z1
+    , bool z2
   >
-  struct max<Double<e1, d1, m1, s1, n1>, Double<e2, d2, m2, s2, n2>>
+  struct max<Double<e1, d1, m1, n1, z1>, Double<e2, d2, m2, n2, z2>>
     : public compare
   <
-    Double<e1, d1, m1, s1, n1>
-    , Double<e2, d2, m2, s2, n1>
+    Double<e1, d1, m1, n1, z1>
+    , Double<e2, d2, m2, n2, z2>
     , (e1 > e2)
     , (e1 < e2)
     , (d1 > d2)
