@@ -10,6 +10,14 @@
 
 namespace maths
 {
+  namespace double_
+  {
+    namespace div_
+    {
+      template <typename lhs, typename rhs>
+      struct impl {};
+    } /* div_ */
+  } /* double_ */
   template
   <
     long e1
@@ -26,6 +34,31 @@ namespace maths
   struct div<Double<e1, d1, m1, n1, z1>, Double<e2, d2, m2, n2, z2>>
   {
     typedef DOUBLE(0, 0) type;
+  };
+
+  /*!
+   * \brief Make a division by zero not work
+   *
+   * This specialisation exists in order to make a division by zero to not
+   * compile
+   */
+  template
+  <
+    long e
+    , unsigned long d
+    , unsigned long m1
+    , unsigned long m2
+    , bool n1
+    , bool n2
+    , bool z1
+    , bool z2
+  >
+  struct div<Double<e, d, m1, n1, z1>, Double<0, 0, m2, n2, z2>>
+  {
+    /*!
+     * Here the inexistence of typedef and of type value declaration is wanted
+     * in order to create a compilation error on div by zero call.
+     */
   };
 } /* maths */
 
