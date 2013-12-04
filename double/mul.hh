@@ -13,6 +13,7 @@
 # include <maths/div.hh>
 # include <maths/mod.hh>
 # include <maths/pow.hh>
+# include <maths/double/shifted.hh>
 
 namespace maths
 {
@@ -20,64 +21,6 @@ namespace maths
   {
     namespace mul_
     {
-      /*!
-       * \brief This computes the value of the Double in complete Long
-       * representation.
-       *
-       * This structure computes the value of the Double diven as template
-       * parameter as a single long, in order to make multiplication easier.
-       *
-         \code
-         if (s)
-           v = e * 10 ^ m - d;
-         else
-           v = e * 10 ^ m + d;
-         \endcode
-       *
-       */
-      template <typename T>
-      struct shifted {};
-
-      template
-      <
-        long e
-        , unsigned long d
-        , unsigned long m
-        , bool n
-        , bool z
-      >
-      struct shifted<Double<e, d, m, n, z>>
-        : public maths::add
-                 <
-                   typename maths::mul
-                   <
-                     Long<e>
-                     , typename maths::pow<Long<10>, Long<m>>::type
-                   >::type
-                   , Long<d>
-                 >
-      {
-      };
-      template
-      <
-        long e
-        , unsigned long d
-        , unsigned long m
-        , bool z
-      >
-      struct shifted<Double<e, d, m, true, z>>
-        : public maths::sub
-                 <
-                   typename maths::mul
-                   <
-                     Long<e>
-                     , typename maths::pow<Long<10>, Long<m>>::type
-                   >::type
-                   , Long<d>
-                 >
-      {
-      };
-
       template <typename T, bool neg>
       struct impl {};
 
@@ -126,8 +69,8 @@ namespace maths
     /// CommaLess = (e1 * 10 ^ m1 +/- d1) * (e2 * 10 ^ m2 +/- d2)
     enum { CommaLess = maths::mul
                        <
-                         typename double_::mul_::shifted<Double<e1, d1, m1, n1, z1>>::type
-                         , typename double_::mul_::shifted<Double<e2, d2, m2, n2, z2>>::type
+                         typename double_::shifted<Double<e1, d1, m1, n1, z1>>::type
+                         , typename double_::shifted<Double<e2, d2, m2, n2, z2>>::type
                        >::type::value
          };
     /// m = m1 + m2
