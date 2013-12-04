@@ -6,6 +6,10 @@
 
 #ifndef MATHS_DOUBLE_SHIFTED_HH_
 # define MATHS_DOUBLE_SHIFTED_HH_
+# include <maths/add.hh>
+# include <maths/sub.hh>
+# include <maths/mul.hh>
+# include <maths/pow.hh>
 
 namespace maths
 {
