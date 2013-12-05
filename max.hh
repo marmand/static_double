@@ -9,6 +9,9 @@
 
 namespace maths
 {
+  /*!
+   * \brief Returns the biggest of the two elements
+   */
   template <typename lhs, typename rhs>
   struct max {};
 } /* maths */

@@ -9,6 +9,11 @@
 
 namespace maths
 {
+  /*!
+   * \brief Returns lhs * rhs
+   * \todo Add Double * Long
+   * \todo Add Long * Double
+   */
   template <typename lhs, typename rhs>
   struct mul {};
 } /* maths */

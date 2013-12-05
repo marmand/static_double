@@ -9,6 +9,27 @@
 
 namespace maths
 {
+  /*!
+   * \brief Returns a type on comparision basis.
+   *
+   * This methods return the first element or the second one depending on the
+   * values given afterward.
+   *
+   * As shown by following pseudo-code snippet:
+   *
+     \code
+     if(first)
+       return lhs;
+     else if (second)
+       return rhs;
+     else if (eq_first)
+       return lhs;
+     else if (eq_second)
+       return rhs;
+     else
+       assert(false && "break compilation");
+     \endcode
+   */
   template
   <
     typename lhs

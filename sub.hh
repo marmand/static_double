@@ -9,6 +9,9 @@
 
 namespace maths
 {
+  /*!
+   * \brief Returns \a lhs - \a rhs
+   */
   template <typename lhs, typename rhs>
   struct sub {};
 } /* maths */

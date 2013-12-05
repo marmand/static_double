@@ -9,6 +9,12 @@
 
 namespace maths
 {
+  /*!
+   * \brief Computes the addition of two numbers
+   *
+   * This method computes the addition of two numbers represented as types.
+   * \todo Create the addition between Long and Double
+   */
   template <typename lhs, typename rhs>
   struct add {};
 } /* maths */

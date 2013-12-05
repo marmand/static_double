@@ -9,6 +9,9 @@
 
 namespace maths
 {
+  /*!
+   * \brief Returns the rest of the natural division of lhs by rhs.
+   */
   template <typename lhs, typename rhs>
   struct mod {};
 } /* maths */

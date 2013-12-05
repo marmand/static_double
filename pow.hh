@@ -9,6 +9,9 @@
 
 namespace maths
 {
+  /*!
+   * \brief Returns \a lhs to the power of \a rhs
+   */
   template <typename lhs, typename rhs>
   struct pow {};
 } /* maths */

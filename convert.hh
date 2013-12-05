@@ -11,6 +11,25 @@
 
 namespace maths
 {
+  /*!
+   * \brief Convert a number type to another
+   *
+   * As we do not have dynamic conversion, but we can through operators:
+   *
+     \code
+     template <long v>
+     Long<v>::operator long () { return v; }
+
+     template<>
+     Double<>::operator double () { return value; }
+     \endcode
+   *
+   * As expected these are pseudo-code methods, in order to avoid code
+   * replication in documentation.
+   *
+   * We do also have static conversion with maths::convert, that converts from
+   * Long to Double and from Double to Long.
+   */
   template <typename e>
   struct convert {};
 

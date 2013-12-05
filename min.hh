@@ -9,6 +9,9 @@
 
 namespace maths
 {
+  /*!
+   * \brief Returns the smallest of the two elements
+   */
   template <typename lhs, typename rhs>
   struct min {};
 } /* maths */
