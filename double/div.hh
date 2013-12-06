@@ -7,6 +7,7 @@
 #ifndef MATHS_DOUBLE_DIV_HH_
 # define MATHS_DOUBLE_DIV_HH_
 # include <maths/double/type.hh>
+# include <maths/shifted.hh>
 
 namespace maths
 {
@@ -16,6 +17,28 @@ namespace maths
     {
       template <typename lhs, typename rhs>
       struct impl {};
+
+      template
+      <
+        long e1
+        , long e2
+        , unsigned long d1
+        , unsigned long d2
+        , unsigned long m1
+        , unsigned long m2
+        , bool n1
+        , bool n2
+        , bool z1
+        , bool z2
+      >
+      struct impl<Double<e1, d1, m1, n1, z1>, Double<e2, d2, m2, n2, z2>>
+      {
+      private:
+        /// lhs = maths::double_::shifted<lhs>
+        typedef typename shifted<Double<e1, d1, m1, n1, z1>>::type lhs;
+        /// rhs = maths::double_::shifted<rhs>
+        typedef typename shifted<Double<e2, d2, m2, n2, z2>>::type rhs;
+      };
     } /* div_ */
   } /* double_ */
   template

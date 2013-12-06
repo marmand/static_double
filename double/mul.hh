@@ -7,13 +7,13 @@
 #ifndef MATHS_DOUBLE_MUL_HH_
 # define MATHS_DOUBLE_MUL_HH_
 # include <maths/double/type.hh>
+# include <maths/shifted.hh>
 # include <maths/abs.hh>
 # include <maths/add.hh>
 # include <maths/mul.hh>
 # include <maths/div.hh>
 # include <maths/mod.hh>
 # include <maths/pow.hh>
-# include <maths/double/shifted.hh>
 
 namespace maths
 {
@@ -69,8 +69,8 @@ namespace maths
     /// CommaLess = (e1 * 10 ^ m1 +/- d1) * (e2 * 10 ^ m2 +/- d2)
     enum { CommaLess = maths::mul
                        <
-                         typename double_::shifted<Double<e1, d1, m1, n1, z1>>::type
-                         , typename double_::shifted<Double<e2, d2, m2, n2, z2>>::type
+                         typename shifted<Double<e1, d1, m1, n1, z1>>::type
+                         , typename shifted<Double<e2, d2, m2, n2, z2>>::type
                        >::type::value
          };
     /// m = m1 + m2
