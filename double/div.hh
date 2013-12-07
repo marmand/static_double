@@ -15,6 +15,7 @@
 # include <maths/mul.hh>
 # include <maths/div.hh>
 # include <maths/mod.hh>
+# include <maths/pow.hh>
 
 namespace maths
 {
@@ -75,7 +76,17 @@ namespace maths
         typedef typename shifted<Double<e1, d1, m1, n1, z1>>::type lhs;
         /// rhs = maths::shifted<rhs>
         typedef typename shifted<Double<e2, d2, m2, n2, z2>>::type rhs;
+
         typedef typename recurse<lhs, rhs, Long<0>, DIVISION_PRECISION, false>::type result;
+
+        enum { Mul = max<Long<m1>, Long<m2>>::type::value };
+        typedef typename pow<Long<10>, Long<Mul>>::type exp;
+        enum { Ent = div<result, exp>::type::value };
+        enum { Dec = mod<result, exp>::type::value };
+        enum { Sig = result::value < 0 };
+        enum { Zero = result::value == 0 };
+      public:
+        typedef Double<Ent, Dec, Mul, Sig, Zero> type;
       };
     } /* div_ */
   } /* double_ */
@@ -93,8 +104,8 @@ namespace maths
     , bool z2
   >
   struct div<Double<e1, d1, m1, n1, z1>, Double<e2, d2, m2, n2, z2>>
+    : public double_::div_::impl<Double<e1, d1, m1, n1, z1>, Double<e2, d2, m2, n2, z2>>
   {
-    typedef DOUBLE(0, 0) type;
   };
 
   /*!
