@@ -11,6 +11,10 @@
 # endif /* HAVE_CONFIG_H */
 # include <maths/double/type.hh>
 # include <maths/shifted.hh>
+# include <maths/eq.hh>
+# include <maths/mul.hh>
+# include <maths/div.hh>
+# include <maths/mod.hh>
 
 namespace maths
 {
@@ -18,8 +22,35 @@ namespace maths
   {
     namespace div_
     {
-      template <typename lhs, typename rhs, unsigned n>
-      struct recurse {};
+      template <typename lhs, typename rhs, typename res, unsigned n, bool z>
+      struct recurse
+      {
+      private:
+        typedef typename maths::div<lhs, rhs>::type resultat;
+        typedef typename maths::mod<lhs, rhs>::type reste;
+      public:
+        typedef typename recurse
+                <
+                  typename maths::mul<lhs, Long<10>>::type
+                  , rhs
+                  , resultat
+                  , n - 1
+                  , maths::eq<reste, Long<0>>::value
+                >::type
+                type;
+      };
+
+      template <typename lhs, typename rhs, typename res, bool z>
+      struct recurse<lhs, rhs, res, 0, z>
+      {
+        typedef res type;
+      };
+
+      template <typename lhs, typename rhs, typename res, unsigned n>
+      struct recurse<lhs, rhs, res, n, true>
+      {
+        typedef res type;
+      };
 
       template <typename lhs, typename rhs>
       struct impl {};
@@ -44,7 +75,7 @@ namespace maths
         typedef typename shifted<Double<e1, d1, m1, n1, z1>>::type lhs;
         /// rhs = maths::shifted<rhs>
         typedef typename shifted<Double<e2, d2, m2, n2, z2>>::type rhs;
-        typedef typename recurse<lhs, rhs, DIVISION_PRECISION>::type res;
+        typedef typename recurse<lhs, rhs, Long<0>, DIVISION_PRECISION, false>::type result;
       };
     } /* div_ */
   } /* double_ */
