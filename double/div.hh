@@ -6,6 +6,9 @@
 
 #ifndef MATHS_DOUBLE_DIV_HH_
 # define MATHS_DOUBLE_DIV_HH_
+# if defined HAVE_CONFIG_H
+#  include <config.hh>
+# endif /* HAVE_CONFIG_H */
 # include <maths/double/type.hh>
 # include <maths/shifted.hh>
 
@@ -15,6 +18,9 @@ namespace maths
   {
     namespace div_
     {
+      template <typename lhs, typename rhs, unsigned n>
+      struct recurse {};
+
       template <typename lhs, typename rhs>
       struct impl {};
 
@@ -34,10 +40,11 @@ namespace maths
       struct impl<Double<e1, d1, m1, n1, z1>, Double<e2, d2, m2, n2, z2>>
       {
       private:
-        /// lhs = maths::double_::shifted<lhs>
+        /// lhs = maths::shifted<lhs>
         typedef typename shifted<Double<e1, d1, m1, n1, z1>>::type lhs;
-        /// rhs = maths::double_::shifted<rhs>
+        /// rhs = maths::shifted<rhs>
         typedef typename shifted<Double<e2, d2, m2, n2, z2>>::type rhs;
+        typedef typename recurse<lhs, rhs, DIVISION_PRECISION>::type res;
       };
     } /* div_ */
   } /* double_ */
