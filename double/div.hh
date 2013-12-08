@@ -30,28 +30,32 @@ namespace maths
       private:
         typedef typename maths::div<lhs, rhs>::type resultat;
         typedef typename maths::mod<lhs, rhs>::type reste;
-      public:
-        typedef typename recurse
+        typedef recurse
                 <
                   typename maths::mul<lhs, Long<10>>::type
                   , rhs
                   , resultat
                   , n - 1
                   , maths::eq<reste, Long<0>>::value
-                >::type
-                type;
+                >
+                compute;
+      public:
+        typedef typename compute::type type;
+        enum { N = 1 + compute::N };
       };
 
       template <typename lhs, typename rhs, typename res, bool z>
       struct recurse<lhs, rhs, res, 0, z>
       {
         typedef res type;
+        enum { N = 0 };
       };
 
       template <typename lhs, typename rhs, typename res, unsigned n>
       struct recurse<lhs, rhs, res, n, true>
       {
         typedef res type;
+        enum { N = 0 };
       };
 
       template <typename lhs, typename rhs>
@@ -78,9 +82,10 @@ namespace maths
         /// rhs = maths::shifted<rhs>
         typedef typename shifted<Double<e2, d2, m2, n2, z2>>::type rhs;
 
-        typedef typename recurse<lhs, rhs, Long<0>, DIVISION_PRECISION, false>::type result;
+        typedef recurse<lhs, rhs, Long<0>, DIVISION_PRECISION, false> compute;
+        typedef typename compute::type result;
 
-        enum { Mul = max<Long<m1>, Long<m2>>::type::value };
+        enum { Mul = compute::N};
         typedef typename pow<Long<10>, Long<Mul>>::type exp;
         enum { Ent = div<result, exp>::type::value };
         enum { Dec = abs<typename mod<result, exp>::type>::type::value };
