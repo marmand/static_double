@@ -12,6 +12,7 @@
 # include <maths/double/type.hh>
 # include <maths/shifted.hh>
 # include <maths/eq.hh>
+# include <maths/abs.hh>
 # include <maths/mul.hh>
 # include <maths/div.hh>
 # include <maths/mod.hh>
@@ -82,7 +83,7 @@ namespace maths
         enum { Mul = max<Long<m1>, Long<m2>>::type::value };
         typedef typename pow<Long<10>, Long<Mul>>::type exp;
         enum { Ent = div<result, exp>::type::value };
-        enum { Dec = mod<result, exp>::type::value };
+        enum { Dec = abs<typename mod<result, exp>::type>::type::value };
         enum { Sig = result::value < 0 };
         enum { Zero = result::value == 0 };
       public:
