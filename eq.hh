@@ -23,4 +23,5 @@ namespace maths
 } /* maths */
 
 # include <maths/long/eq.hh>
+# include <maths/double/eq.hh>
 #endif /* !MATHS_EQ_HH_ */
