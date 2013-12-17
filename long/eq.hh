@@ -6,6 +6,7 @@
 
 #ifndef MATHS_LONG_EQ_HH_
 # define MATHS_LONG_EQ_HH_
+# include <maths/long/type.hh>
 
 namespace maths
 {
