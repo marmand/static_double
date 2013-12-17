@@ -90,7 +90,7 @@ namespace maths
         enum { Ent = div<result, exp>::type::value };
         enum { Dec = abs<typename mod<result, exp>::type>::type::value };
         enum { Sig = result::value < 0 };
-        enum { Zero = result::value == 0 };
+        enum { Zero = Ent == 0 };
       public:
         typedef Double<Ent, Dec, Mul, Sig, Zero> type;
       };
