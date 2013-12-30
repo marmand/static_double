@@ -45,7 +45,7 @@ namespace maths
                   >::type
                 >::type Dec;
       public:
-        typedef impl<Ent::value, Dec::value, Exp, n, z> type;
+        typedef typename impl<Ent::value, Dec::value, Exp, n, z>::type type;
       };
       template
       <
@@ -79,7 +79,7 @@ namespace maths
                     >::type
                 >::type Dec;
       public:
-        typedef impl<Ent::value, Dec::value, Exp, true, z> type;
+        typedef typename impl<Ent::value, Dec::value, Exp, true, z>::type type;
       };
       template
       <
