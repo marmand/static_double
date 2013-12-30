@@ -78,14 +78,16 @@ namespace maths
       {
       private:
         /// lhs = maths::shifted<lhs>
-        typedef typename shifted<Double<e1, d1, m1, n1, z1>>::type lhs;
+        typedef shifted<Double<e1, d1, m1, n1, z1>> compute_lhs;
+        typedef typename compute_lhs::type lhs;
         /// rhs = maths::shifted<rhs>
-        typedef typename shifted<Double<e2, d2, m2, n2, z2>>::type rhs;
+        typedef shifted<Double<e2, d2, m2, n2, z2>> compute_rhs;
+        typedef typename compute_rhs::type rhs;
 
         typedef recurse<lhs, rhs, Long<0>, DIVISION_PRECISION, false> compute;
         typedef typename compute::type result;
 
-        enum { Mul = compute::N};
+        enum { Mul = compute_lhs::Recursion + compute_rhs::Recursion };
         typedef typename pow<Long<10>, Long<Mul>>::type exp;
         enum { Ent = div<result, exp>::type::value };
         enum { Dec = abs<typename mod<result, exp>::type>::type::value };
