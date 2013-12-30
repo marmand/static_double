@@ -106,6 +106,9 @@ namespace maths
       };
     } /* shifted_ */
   } /* double_ */
+  /*!
+   * Computes the shifted value of the Double passed as parameter
+   */
   template
   <
     long e
