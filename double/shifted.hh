@@ -47,6 +47,7 @@ namespace maths
         typedef impl<Ent::value, Dec::value, Exp, n, z> compute;
       public:
         typedef typename compute::type type;
+        enum { Recursion = 1 + compute::Recursion };
       };
       template
       <
@@ -82,6 +83,7 @@ namespace maths
         typedef impl<Ent::value, Dec::value, Exp, true, z> compute;
       public:
         typedef typename compute::type type;
+        enum { Recursion = 1 + compute::Recursion };
       };
       template
       <
@@ -93,6 +95,7 @@ namespace maths
       struct impl<e, 0, m, n, z>
       {
         typedef Long<e> type;
+        enum { Recursion = 0 };
       };
       template
       <
@@ -103,6 +106,7 @@ namespace maths
       struct impl<e, 0, m, true, z>
       {
         typedef Long<e> type;
+        enum { Recursion = 0 };
       };
     } /* shifted_ */
   } /* double_ */
