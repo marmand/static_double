@@ -44,8 +44,9 @@ namespace maths
                     >::type
                   >::type
                 >::type Dec;
+        typedef impl<Ent::value, Dec::value, Exp, n, z> compute;
       public:
-        typedef typename impl<Ent::value, Dec::value, Exp, n, z>::type type;
+        typedef typename compute::type type;
       };
       template
       <
@@ -78,8 +79,9 @@ namespace maths
                       , typename maths::pow<Long<10>, Long<Exp>>::type
                     >::type
                 >::type Dec;
+        typedef impl<Ent::value, Dec::value, Exp, true, z> compute;
       public:
-        typedef typename impl<Ent::value, Dec::value, Exp, true, z>::type type;
+        typedef typename compute::type type;
       };
       template
       <
