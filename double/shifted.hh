@@ -32,7 +32,7 @@ namespace maths
       private:
         typedef typename maths::mul<Long<e>, Long<10>>::type prev_ent;
         enum { Exp = m - 1 };
-        typedef typename maths::mod<Long<d>, typename maths::pow<Long<10>, Long<Exp>>::type>::type ent_add;
+        typedef typename maths::div<Long<d>, typename maths::pow<Long<10>, Long<Exp>>::type>::type ent_add;
         typedef typename maths::add<prev_ent, ent_add>::type Ent;
         typedef typename maths::sub
                 <
@@ -59,7 +59,7 @@ namespace maths
       private:
         typedef typename maths::mul<Long<e>, Long<10>>::type prev_ent;
         enum { Exp = m - 1 };
-        typedef typename maths::mod
+        typedef typename maths::div
                 <
                   Long<d>
                   , typename maths::pow
