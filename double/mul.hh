@@ -74,9 +74,11 @@ namespace maths
                        >::type::value
          };
     /// m = m1 + m2
-    enum { Mult = maths::add<Long<m1>, Long<m2>>::type::value
-                  - (d1 == 0 ? 1 : 0)
-                  - (d2 == 0 ? 1 : 0)
+    enum { Mult = maths::add
+                  <
+                    Long<shifted<Double<e1, d1, m1, n1, z1>>::Recursion>
+                    , Long<shifted<Double<e2, d2, m2, n2, z2>>::Recursion>
+                  >::type::value
          };
     /// d = | CommaLess % 10 ^ m |
     enum { Dec = maths::abs
