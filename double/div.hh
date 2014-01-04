@@ -87,7 +87,11 @@ namespace maths
         typedef recurse<lhs, rhs, Long<0>, DIVISION_PRECISION, false> compute;
         typedef typename compute::type result;
 
-        enum { Mul = compute_lhs::Recursion + compute_rhs::Recursion };
+        enum { Mul = compute_lhs::Recursion // Digits number in #1
+                   + compute_rhs::Recursion // Digits number in #2
+                   + compute::N - 1         // Overflow
+             };
+
         typedef typename pow<Long<10>, Long<Mul>>::type exp;
         enum { Ent = div<result, exp>::type::value };
         enum { Dec = abs<typename mod<result, exp>::type>::type::value };
