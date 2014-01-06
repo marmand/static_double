@@ -49,6 +49,12 @@ namespace maths
       typedef X type;
     };
 
+    template <long n, typename X>
+    struct sudan<Long<n>, X, Long<0>>
+    {
+      typedef X type;
+    };
+
     template <typename X, typename Y>
     struct sudan<Long<0>, X, Y>
     {
