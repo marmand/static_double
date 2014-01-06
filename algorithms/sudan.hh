@@ -28,7 +28,7 @@ namespace maths
                   <
                     Long<n>
                     , X
-                    , typename maths::sub<Y, DOUBLE(1, 0)>::type
+                    , typename maths::sub<Y, Long<1>>::type
                   >::type
                 , typename maths::add
                   <
@@ -36,17 +36,11 @@ namespace maths
                     <
                       Long<n>
                       , X
-                      , typename maths::sub<Y, DOUBLE(1, 0)>::type
+                      , typename maths::sub<Y, Long<1>>::type
                     >::type
                   , Y
                 >::type
               >::type type;
-    };
-
-    template <long n, typename X>
-    struct sudan<Long<n>, X, DOUBLE(0, 0)>
-    {
-      typedef X type;
     };
 
     template <long n, typename X>
@@ -62,11 +56,6 @@ namespace maths
     };
 
     // ambigious template clearing
-    template <typename X>
-    struct sudan<Long<0>, X, DOUBLE(0, 0)>
-    {
-      typedef X type;
-    };
     template <typename X>
     struct sudan<Long<0>, X, Long<0>>
     {
