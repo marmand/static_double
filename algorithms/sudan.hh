@@ -15,6 +15,11 @@ namespace maths
 {
   namespace algorithms
   {
+    /*!
+     * \brief implement the first created non primitive recursive function.
+     *
+     * http://en.wikipedia.org/wiki/Sudan_function
+     */
     template <typename N, typename X, typename Y>
     struct sudan {};
 
