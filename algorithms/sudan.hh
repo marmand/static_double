@@ -60,6 +60,18 @@ namespace maths
     {
       typedef typename maths::add<X, Y>::type type;
     };
+
+    // ambigious template clearing
+    template <typename X>
+    struct sudan<Long<0>, X, DOUBLE(0, 0)>
+    {
+      typedef X type;
+    };
+    template <typename X>
+    struct sudan<Long<0>, X, Long<0>>
+    {
+      typedef X type;
+    };
   } /* algorithms */
 } /* maths */
 
