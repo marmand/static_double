@@ -11,6 +11,9 @@ namespace maths
 {
   /*!
    * \brief Returns \a lhs to the power of \a rhs
+   * \todo Double ** Double
+   * \todo Double ** Long
+   * \todo Long ** Double
    */
   template <typename lhs, typename rhs>
   struct pow {};
