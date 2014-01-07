@@ -13,4 +13,5 @@ namespace maths
   struct sqrt;
 } /* maths */
 
+# include <maths/double/sqrt.hh>
 #endif /* !MATHS_SQRT_HH_ */
