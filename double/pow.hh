@@ -14,8 +14,76 @@ namespace maths
   {
     namespace pow_
     {
+      namespace long_
+      {
+        /*!
+         * \todo Do negative case
+         */
+        template
+        <
+          long e
+          , unsigned long d
+          , unsigned long m
+          , bool n
+          , bool z
+          , long v
+          , bool pos
+        >
+        struct impl {};
+        template
+        <
+          long e
+          , unsigned long d
+          , unsigned long m
+          , bool n
+          , bool z
+          , long v
+        >
+        struct impl<e, d, m, n, z, v, true>
+        {
+          typedef typename mul
+                  <
+                    Double<e, d, m, n, z>
+                    , typename pow<Double<e, d, m, n, z>, Long<v - 1>>::type
+                  >::type
+                  type;
+        };
+      } /* long_ */
     } /* pow_ */
   } /* double_ */
+
+  /*!
+   * Double ** Long
+   */
+  template
+  <
+    long e
+    , unsigned long d
+    , unsigned long m
+    , bool n
+    , bool z
+    , long v
+  >
+  struct pow<Double<e, d, m, n, z>, Long<v>>
+    : public double_::pow_::long_::impl<e, d, m, n, z, v, 0 <= v>
+  {
+  };
+  template
+  <
+    long e
+    , unsigned long d
+    , unsigned long m
+    , bool n
+    , bool z
+  >
+  struct pow<Double<e, d, m, n, z>, Long<0>>
+  {
+    typedef DOUBLE(1, 0) type;
+  };
+
+  /*!
+   * Double ** Double
+   */
   template
   <
     long e1
