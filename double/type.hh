@@ -1,5 +1,5 @@
 /*!
-** \author  armand
+** \author  Armand Leclercq
 ** \file    double/type.hh
 ** \date    Sat 17 Aug 2013 12:21:20 PM CEST
 */
@@ -109,9 +109,9 @@ struct Double
 // Define usefull constants
 namespace maths
 {
-  // e from math.h M_E
+  /// \typedef e from math.h M_E
   typedef DOUBLE(2, 7182818284590452354) e;
-  // pi from math.h M_PI
+  /// \typedef pi from math.h M_PI
   typedef DOUBLE(3, 1415926535897932385) pi;
 } /* maths */
 
