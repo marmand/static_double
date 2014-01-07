@@ -9,68 +9,6 @@
 # include <cmath>
 # include <digits.hh>
 
-namespace maths
-{
-  namespace double_
-  {
-    namespace type_
-    {
-      template
-      <
-        long e
-        , unsigned long d
-        , unsigned long m
-        , bool n
-        , bool z
-      >
-      struct impl {};
-
-      template
-      <
-        long e
-        , unsigned long d
-        , unsigned long m
-        , bool n
-      >
-      struct impl<e, d, m, n, false>
-      {
-        enum { Ent = e };
-        enum { Dec = d };
-        enum { Mult = m };
-        enum { Neg = n };
-        enum { Zero = false };
-        operator double() const
-        {
-          return Neg
-            ? Ent - (Dec / std::pow(10.0, Mult))
-            : Ent + (Dec / std::pow(10.0, Mult));
-        }
-      };
-      template
-      <
-        long e
-        , unsigned long d
-        , unsigned long m
-        , bool n
-      >
-      struct impl<e, d, m, n, true>
-      {
-        enum { Ent = e };
-        enum { Dec = d };
-        enum { Mult = m };
-        enum { Neg = n };
-        enum { Zero = true };
-        operator double() const
-        {
-          return Neg
-            ? Ent - (Dec / std::pow(10.0, Mult))
-            : Ent + (Dec / std::pow(10.0, Mult));
-        }
-      };
-    } /* type_ */
-  } /* double_ */
-} /* maths */
-
 /*!
  * \class Double
  * \brief Represent a double in static world
@@ -87,8 +25,18 @@ template
   , bool zero
 >
 struct Double
-  : public maths::double_::type_::impl<entiere, decimal, mult, neg, zero>
 {
+  enum { Ent = entiere };
+  enum { Dec = decimal };
+  enum { Mult = mult };
+  enum { Neg = neg };
+  enum { Zero = zero };
+  operator double() const
+  {
+    return Neg
+      ? Ent - (Dec / std::pow(10.0, Mult))
+      : Ent + (Dec / std::pow(10.0, Mult));
+  }
 };
 
 /// Represent a double as Ent + 0.Dec * 10 ^ -Exp
