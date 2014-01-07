@@ -7,7 +7,7 @@
 #ifndef DOUBLE_TYPE_HH_
 # define DOUBLE_TYPE_HH_
 # include <cmath>
-# include <digits.hh>
+# include <maths/digits.hh>
 
 namespace maths
 {
