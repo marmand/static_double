@@ -13,6 +13,7 @@ namespace maths
    * \brief Returns lhs * rhs
    * \todo Add Double * Long
    * \todo Add Long * Double
+   * \todo Handle overflow occuring in decimal part by cutting it
    */
   template <typename lhs, typename rhs>
   struct mul {};
