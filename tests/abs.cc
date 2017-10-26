@@ -20,3 +20,17 @@ TEST(Abs, long_negative)
   typedef maths::abs<lhs>::type result;
   ASSERT_EQ(10, result());
 }
+
+TEST(Abs, double_positive)
+{
+  typedef DOUBLE(1, 12) lhs;
+  typedef maths::abs<lhs>::type result;
+  ASSERT_EQ(1.12, result());
+}
+
+TEST(Abs, double_negative)
+{
+  typedef DOUBLE(-1, 12) lhs;
+  typedef maths::abs<lhs>::type result;
+  ASSERT_EQ(1.12, result());
+}
