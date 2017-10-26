@@ -48,3 +48,9 @@ TEST(Double, three_zero_one)
   typedef DOUBLE(3, 01) value;
   ASSERT_EQ(3.01, value());
 }
+
+TEST(Double, constants)
+{
+  ASSERT_FLOAT_EQ(M_E, maths::e());
+  ASSERT_FLOAT_EQ(M_PI, maths::pi());
+}
