@@ -1,6 +1,6 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/mul.hh
+ * \file  mul.hh
  * \date  Mon 18 Nov 2013 02:51:38 PM CET
  */
 
@@ -18,6 +18,6 @@ namespace maths
   struct mul {};
 } /* maths */
 
-# include <maths/long/mul.hh>
-# include <maths/double/mul.hh>
+# include <long/mul.hh>
+# include <double/mul.hh>
 #endif /* !MATHS_MUL_HH_ */

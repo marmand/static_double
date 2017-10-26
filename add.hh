@@ -1,6 +1,6 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/add.hh
+ * \file  add.hh
  * \date  Mon 18 Nov 2013 02:49:43 PM CET
  */
 
@@ -19,6 +19,6 @@ namespace maths
   struct add {};
 } /* maths */
 
-# include <maths/long/add.hh>
-# include <maths/double/add.hh>
+# include <long/add.hh>
+# include <double/add.hh>
 #endif /* !MATHS_ADD_HH_ */

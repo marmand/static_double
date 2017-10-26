@@ -1,19 +1,19 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/double/mul.hh
+ * \file  double/mul.hh
  * \date  Thu 28 Nov 2013 06:25:02 PM CET
  */
 
 #ifndef MATHS_DOUBLE_MUL_HH_
 # define MATHS_DOUBLE_MUL_HH_
-# include <maths/double/type.hh>
-# include <maths/shifted.hh>
-# include <maths/abs.hh>
-# include <maths/add.hh>
-# include <maths/mul.hh>
-# include <maths/div.hh>
-# include <maths/mod.hh>
-# include <maths/pow.hh>
+# include <double/type.hh>
+# include <shifted.hh>
+# include <abs.hh>
+# include <add.hh>
+# include <mul.hh>
+# include <div.hh>
+# include <mod.hh>
+# include <pow.hh>
 
 namespace maths
 {

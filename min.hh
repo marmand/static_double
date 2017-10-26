@@ -1,6 +1,6 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/min.hh
+ * \file  min.hh
  * \date  Mon 18 Nov 2013 04:40:56 PM CET
  */
 
@@ -16,6 +16,6 @@ namespace maths
   struct min {};
 } /* maths */
 
-# include <maths/long/min.hh>
-# include <maths/double/min.hh>
+# include <long/min.hh>
+# include <double/min.hh>
 #endif /* !MATHS_MIN_HH_ */

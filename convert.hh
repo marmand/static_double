@@ -1,13 +1,13 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/convert.hh
+ * \file  convert.hh
  * \date  Tue 19 Nov 2013 11:48:12 AM CET
  */
 
 #ifndef MATHS_CONVERT_HH_
 # define MATHS_CONVERT_HH_
-# include <maths/long.hh>
-# include <maths/double.hh>
+# include <long.hh>
+# include <double.hh>
 
 namespace maths
 {

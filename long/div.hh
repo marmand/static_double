@@ -1,12 +1,12 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/long/div.hh
+ * \file  long/div.hh
  * \date  Mon 18 Nov 2013 10:33:37 PM CET
  */
 
 #ifndef MATHS_LONG_DIV_HH_
 # define MATHS_LONG_DIV_HH_
-# include <maths/long/type.hh>
+# include <long/type.hh>
 
 namespace maths
 {

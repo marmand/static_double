@@ -1,12 +1,12 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/double/abs.hh
+ * \file  double/abs.hh
  * \date  Sun 24 Nov 2013 07:28:15 PM CET
  */
 
 #ifndef MATHS_DOUBLE_ABS_HH_
 # define MATHS_DOUBLE_ABS_HH_
-# include <maths/double/type.hh>
+# include <double/type.hh>
 
 namespace maths
 {

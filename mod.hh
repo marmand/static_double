@@ -1,6 +1,6 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/mod.hh
+ * \file  mod.hh
  * \date  Tue 19 Nov 2013 12:42:57 PM CET
  */
 
@@ -16,5 +16,5 @@ namespace maths
   struct mod {};
 } /* maths */
 
-# include <maths/long/mod.hh>
+# include <long/mod.hh>
 #endif /* !MATHS_MOD_HH_ */

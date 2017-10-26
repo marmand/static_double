@@ -1,6 +1,6 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/double/div.hh
+ * \file  double/div.hh
  * \date  Mon 02 Dec 2013 09:30:43 PM CET
  */
 
@@ -9,14 +9,14 @@
 # if defined HAVE_CONFIG_H
 #  include <config.hh>
 # endif /* HAVE_CONFIG_H */
-# include <maths/double/type.hh>
-# include <maths/shifted.hh>
-# include <maths/eq.hh>
-# include <maths/abs.hh>
-# include <maths/mul.hh>
-# include <maths/div.hh>
-# include <maths/mod.hh>
-# include <maths/pow.hh>
+# include <double/type.hh>
+# include <shifted.hh>
+# include <eq.hh>
+# include <abs.hh>
+# include <mul.hh>
+# include <div.hh>
+# include <mod.hh>
+# include <pow.hh>
 
 namespace maths
 {

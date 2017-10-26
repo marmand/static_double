@@ -1,17 +1,17 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/double/shifted.hh
+ * \file  double/shifted.hh
  * \date  Wed 04 Dec 2013 05:48:57 PM CET
  */
 
 #ifndef MATHS_DOUBLE_SHIFTED_HH_
 # define MATHS_DOUBLE_SHIFTED_HH_
-# include <maths/double/type.hh>
-# include <maths/add.hh>
-# include <maths/sub.hh>
-# include <maths/mul.hh>
-# include <maths/div.hh>
-# include <maths/pow.hh>
+# include <double/type.hh>
+# include <add.hh>
+# include <sub.hh>
+# include <mul.hh>
+# include <div.hh>
+# include <pow.hh>
 
 namespace maths
 {

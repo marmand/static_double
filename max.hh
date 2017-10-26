@@ -1,6 +1,6 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/max.hh
+ * \file  max.hh
  * \date  Mon 18 Nov 2013 05:47:47 PM CET
  */
 
@@ -16,6 +16,6 @@ namespace maths
   struct max {};
 } /* maths */
 
-# include <maths/long/max.hh>
-# include <maths/double/max.hh>
+# include <long/max.hh>
+# include <double/max.hh>
 #endif /* !MATHS_MAX_HH_ */

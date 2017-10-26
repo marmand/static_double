@@ -1,14 +1,14 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/long/pow.hh
+ * \file  long/pow.hh
  * \date  Sun 17 Nov 2013 05:36:19 PM CET
  */
 
 #ifndef MATHS_LONG_POW_HH_
 # define MATHS_LONG_POW_HH_
-# include <maths/long/type.hh>
-# include <maths/mul.hh>
-# include <maths/div.hh>
+# include <long/type.hh>
+# include <mul.hh>
+# include <div.hh>
 
 namespace maths
 {

@@ -1,6 +1,6 @@
 /*!
 ** \author  armand
-** \file  maths/compare.hh
+** \file  compare.hh
 ** \date  Sun 01 Sep 2013 02:38:30 PM CEST
 */
 

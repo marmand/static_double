@@ -1,13 +1,13 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/algorithms/fact.hh
+ * \file  algorithms/fact.hh
  * \date  Sun 05 Jan 2014 07:49:59 PM CET
  */
 
 #ifndef MATHS_ALGORITHMS_FACT_HH_
 # define MATHS_ALGORITHMS_FACT_HH_
-# include <maths/long.hh>
-# include <maths/mul.hh>
+# include <long.hh>
+# include <mul.hh>
 
 namespace maths
 {

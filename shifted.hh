@@ -1,6 +1,6 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/shifted.hh
+ * \file  shifted.hh
  * \date  Fri 06 Dec 2013 08:38:52 PM CET
  */
 
@@ -28,6 +28,6 @@ namespace maths
   struct shifted {};
 } /* maths */
 
-# include <maths/long/shifted.hh>
-# include <maths/double/shifted.hh>
+# include <long/shifted.hh>
+# include <double/shifted.hh>
 #endif /* !MATHS_SHIFTED_HH_ */

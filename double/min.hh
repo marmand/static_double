@@ -1,13 +1,13 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/double/min.hh
+ * \file  double/min.hh
  * \date  Mon 18 Nov 2013 04:47:55 PM CET
  */
 
 #ifndef MATHS_DOUBLE_MIN_HH_
 # define MATHS_DOUBLE_MIN_HH_
-# include <maths/double/type.hh>
-# include <maths/compare.hh>
+# include <double/type.hh>
+# include <compare.hh>
 
 namespace maths
 {

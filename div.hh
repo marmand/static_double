@@ -1,6 +1,6 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/div.hh
+ * \file  div.hh
  * \date  Mon 18 Nov 2013 10:32:10 PM CET
  */
 
@@ -22,6 +22,6 @@ namespace maths
   struct div {};
 } /* maths */
 
-# include <maths/long/div.hh>
-# include <maths/double/div.hh>
+# include <long/div.hh>
+# include <double/div.hh>
 #endif /* !MATHS_DIV_HH_ */

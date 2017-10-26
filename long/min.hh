@@ -1,13 +1,13 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/long/min.hh
+ * \file  long/min.hh
  * \date  Mon 18 Nov 2013 04:43:55 PM CET
  */
 
 #ifndef MATHS_LONG_MIN_HH_
 # define MATHS_LONG_MIN_HH_
-# include <maths/long/type.hh>
-# include <maths/compare.hh>
+# include <long/type.hh>
+# include <compare.hh>
 
 namespace maths
 {

@@ -1,12 +1,12 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/algorithms/acker.hh
+ * \file  algorithms/acker.hh
  * \date  Mon 06 Jan 2014 02:51:53 PM CET
  */
 
 #ifndef MATHS_ALGORITHMS_ACKER_HH_
 # define MATHS_ALGORITHMS_ACKER_HH_
-# include <maths/long.hh>
+# include <long.hh>
 
 namespace maths
 {

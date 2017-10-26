@@ -1,6 +1,6 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/pow.hh
+ * \file  pow.hh
  * \date  Mon 18 Nov 2013 06:20:22 PM CET
  */
 
@@ -16,5 +16,5 @@ namespace maths
   struct pow {};
 } /* maths */
 
-# include <maths/long/pow.hh>
+# include <long/pow.hh>
 #endif /* !MATHS_POW_HH_ */

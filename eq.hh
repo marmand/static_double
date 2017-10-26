@@ -1,6 +1,6 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/eq.hh
+ * \file  eq.hh
  * \date  Sat 07 Dec 2013 03:22:46 PM CET
  */
 
@@ -22,6 +22,6 @@ namespace maths
   };
 } /* maths */
 
-# include <maths/long/eq.hh>
-# include <maths/double/eq.hh>
+# include <long/eq.hh>
+# include <double/eq.hh>
 #endif /* !MATHS_EQ_HH_ */

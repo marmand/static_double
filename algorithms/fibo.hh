@@ -1,13 +1,13 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/algorithms/fibo.hh
+ * \file  algorithms/fibo.hh
  * \date  Mon 06 Jan 2014 02:15:25 PM CET
  */
 
 #ifndef MATHS_ALGORITHMS_FIBO_HH_
 # define MATHS_ALGORITHMS_FIBO_HH_
-# include <maths/long.hh>
-# include <maths/add.hh>
+# include <long.hh>
+# include <add.hh>
 
 namespace maths
 {

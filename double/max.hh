@@ -1,13 +1,13 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/double/max.hh
+ * \file  double/max.hh
  * \date  Mon 18 Nov 2013 05:50:50 PM CET
  */
 
 #ifndef MATHS_DOUBLE_MAX_HH_
 # define MATHS_DOUBLE_MAX_HH_
-# include <maths/double/type.hh>
-# include <maths/compare.hh>
+# include <double/type.hh>
+# include <compare.hh>
 
 namespace maths
 {

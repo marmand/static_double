@@ -1,12 +1,12 @@
 /*!
  * \author  Armand Leclercq
- * \file  maths/long/mod.hh
+ * \file  long/mod.hh
  * \date  Tue 19 Nov 2013 12:58:01 PM CET
  */
 
 #ifndef MATHS_LONG_MOD_HH_
 # define MATHS_LONG_MOD_HH_
-# include <maths/long/type.hh>
+# include <long/type.hh>
 
 namespace maths
 {

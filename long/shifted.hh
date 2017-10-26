@@ -6,7 +6,7 @@
 
 #ifndef SHIFTED_HH_
 # define SHIFTED_HH_
-# include <maths/long/type.hh>
+# include <long/type.hh>
 
 namespace maths
 {
