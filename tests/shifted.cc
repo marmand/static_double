@@ -42,3 +42,36 @@ TEST(Shifted, Double_Null)
     ASSERT_EQ(0, result());
   }
 }
+
+TEST(Shifted, Double_Pi)
+{
+  {
+    typedef DOUBLE(3, 14) pi;
+    typedef maths::shifted<pi>::type result;
+    ASSERT_EQ(314, result());
+  }
+  {
+    typedef DOUBLE(31, 4) pi;
+    typedef maths::shifted<pi>::type result;
+    ASSERT_EQ(314, result());
+  }
+  {
+    typedef DOUBLE(314, 0) pi;
+    typedef maths::shifted<pi>::type result;
+    ASSERT_EQ(314, result());
+  }
+  {
+    typedef DOUBLE(314, 00) pi;
+    typedef maths::shifted<pi>::type result;
+    ASSERT_EQ(314, result());
+  }
+}
+
+TEST(Shifted, Negative_Double)
+{
+  {
+    typedef DOUBLE(-2, 12) lhs;
+    typedef maths::shifted<lhs>::type result;
+    ASSERT_EQ(-212, result());
+  }
+}
