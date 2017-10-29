@@ -46,6 +46,7 @@ AC_CHECK_HEADER([gtest/gtest.h],
 # Checks for typedefs, structures, and compiler characteristics.
 AX_CXX_COMPILE_STDCXX_11([noext])
 AX_APPEND_COMPILE_FLAGS([-Wall],                    [CXXFLAGS])
+AX_APPEND_COMPILE_FLAGS([-Weffc++],                 [CXXFLAGS])
 AX_APPEND_COMPILE_FLAGS([-Wextra],                  [CXXFLAGS])
 AX_APPEND_COMPILE_FLAGS([-Werror],                  [CXXFLAGS])
 AX_APPEND_COMPILE_FLAGS([-Wcast-align],             [CXXFLAGS])
