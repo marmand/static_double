@@ -8,6 +8,7 @@ digits                  \
 double                  \
 eq                      \
 max                     \
+min                     \
 mod                     \
 shifted
 
@@ -17,6 +18,7 @@ digits_SOURCES = %reldir%/digits.cc
 double_SOURCES = %reldir%/double.cc
 eq_SOURCES = %reldir%/eq.cc
 max_SOURCES = %reldir%/max.cc
+min_SOURCES = %reldir%/min.cc
 mod_SOURCES = %reldir%/mod.cc
 shifted_SOURCES = %reldir%/shifted.cc
 
