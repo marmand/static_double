@@ -11,6 +11,7 @@ eq                      \
 max                     \
 min                     \
 mod                     \
+mul                     \
 shifted                 \
 sub
 
@@ -23,6 +24,7 @@ eq_SOURCES = %reldir%/eq.cc
 max_SOURCES = %reldir%/max.cc
 min_SOURCES = %reldir%/min.cc
 mod_SOURCES = %reldir%/mod.cc
+mul_SOURCES = %reldir%/mul.cc
 shifted_SOURCES = %reldir%/shifted.cc
 sub_SOURCES = %reldir%/sub.cc
 
