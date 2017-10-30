@@ -3,6 +3,7 @@ AM_CXXFLAGS = ${PTHREAD_CFLAGS}
 
 check_PROGRAMS =        \
 abs                     \
+add                     \
 convert                 \
 digits                  \
 double                  \
@@ -13,6 +14,7 @@ mod                     \
 shifted
 
 abs_SOURCES = %reldir%/abs.cc
+add_SOURCES = %reldir%/add.cc
 convert_SOURCES = %reldir%/convert.cc
 digits_SOURCES = %reldir%/digits.cc
 double_SOURCES = %reldir%/double.cc
