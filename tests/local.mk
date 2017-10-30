@@ -11,7 +11,8 @@ eq                      \
 max                     \
 min                     \
 mod                     \
-shifted
+shifted                 \
+sub
 
 abs_SOURCES = %reldir%/abs.cc
 add_SOURCES = %reldir%/add.cc
@@ -23,5 +24,6 @@ max_SOURCES = %reldir%/max.cc
 min_SOURCES = %reldir%/min.cc
 mod_SOURCES = %reldir%/mod.cc
 shifted_SOURCES = %reldir%/shifted.cc
+sub_SOURCES = %reldir%/sub.cc
 
 TESTS = $(check_PROGRAMS)
