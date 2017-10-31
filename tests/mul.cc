@@ -34,3 +34,13 @@ TEST(Mul, Double_negative)
   ASSERT_FLOAT_EQ(1.2 * -2.4, lhs_x_rhs());
   ASSERT_FLOAT_EQ(1.2 * -2.4, rhs_x_lhs());
 }
+
+TEST(Mul, Double_negatives)
+{
+  typedef DOUBLE(-1, 2) lhs;
+  typedef DOUBLE(-2, 4) rhs;
+  typedef maths::mul<lhs, rhs>::type lhs_x_rhs;
+  typedef maths::mul<rhs, lhs>::type rhs_x_lhs;
+  ASSERT_FLOAT_EQ(-1.2 * -2.4, lhs_x_rhs());
+  ASSERT_FLOAT_EQ(-1.2 * -2.4, rhs_x_lhs());
+}
