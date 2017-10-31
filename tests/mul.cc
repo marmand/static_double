@@ -56,4 +56,77 @@ TEST(Mul, Double_Long)
   ASSERT_FLOAT_EQ(1.2 * 2, lhs_x_rhs());
   ASSERT_FLOAT_EQ(1.2 * 2, rhs_x_lhs());
 }
+
+TEST(Mul, Long_Double)
+{
+  typedef Long<2> lhs;
+  typedef DOUBLE(1, 2) rhs;
+  typedef maths::mul<lhs, rhs>::type lhs_x_rhs;
+  typedef maths::mul<rhs, lhs>::type rhs_x_lhs;
+  ASSERT_FLOAT_EQ(1.2 * 2, lhs_x_rhs());
+  ASSERT_FLOAT_EQ(1.2 * 2, rhs_x_lhs());
+}
 #endif
+
+TEST(Mul, Long_nuls)
+{
+  typedef Long<0> lhs;
+  typedef Long<0> rhs;
+  typedef maths::mul<lhs, rhs>::type lhs_x_rhs;
+  typedef maths::mul<rhs, lhs>::type rhs_x_lhs;
+  ASSERT_EQ(0, lhs_x_rhs());
+  ASSERT_EQ(0, rhs_x_lhs());
+}
+
+TEST(Mul, Long_nul_lhs)
+{
+  typedef Long<0> lhs;
+  typedef Long<10> rhs;
+  typedef maths::mul<lhs, rhs>::type lhs_x_rhs;
+  typedef maths::mul<rhs, lhs>::type rhs_x_lhs;
+  ASSERT_EQ(0, lhs_x_rhs());
+  ASSERT_EQ(0, rhs_x_lhs());
+}
+
+TEST(Mul, Long_nul_rhs)
+{
+  typedef Long<10> lhs;
+  typedef Long<0> rhs;
+  typedef maths::mul<lhs, rhs>::type lhs_x_rhs;
+  typedef maths::mul<rhs, lhs>::type rhs_x_lhs;
+  ASSERT_EQ(0, lhs_x_rhs());
+  ASSERT_EQ(0, rhs_x_lhs());
+}
+
+#if 0
+/// \fixme: Partial specialization error
+TEST(Mul, Double_nuls)
+{
+  typedef DOUBLE(0, 0) lhs;
+  typedef DOUBLE(0, 0) rhs;
+  typedef maths::mul<lhs, rhs>::type lhs_x_rhs;
+  typedef maths::mul<rhs, lhs>::type rhs_x_lhs;
+  ASSERT_EQ(0, lhs_x_rhs());
+  ASSERT_EQ(0, rhs_x_lhs());
+}
+#endif
+
+TEST(Mul, Double_nul_lhs)
+{
+  typedef DOUBLE(0, 0) lhs;
+  typedef DOUBLE(1, 0) rhs;
+  typedef maths::mul<lhs, rhs>::type lhs_x_rhs;
+  typedef maths::mul<rhs, lhs>::type rhs_x_lhs;
+  ASSERT_EQ(0, lhs_x_rhs());
+  ASSERT_EQ(0, rhs_x_lhs());
+}
+
+TEST(Mul, Double_nul_rhs)
+{
+  typedef DOUBLE(1, 0) lhs;
+  typedef DOUBLE(0, 0) rhs;
+  typedef maths::mul<lhs, rhs>::type lhs_x_rhs;
+  typedef maths::mul<rhs, lhs>::type rhs_x_lhs;
+  ASSERT_EQ(0, lhs_x_rhs());
+  ASSERT_EQ(0, rhs_x_lhs());
+}
