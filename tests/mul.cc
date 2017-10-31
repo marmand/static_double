@@ -44,3 +44,16 @@ TEST(Mul, Double_negatives)
   ASSERT_FLOAT_EQ(-1.2 * -2.4, lhs_x_rhs());
   ASSERT_FLOAT_EQ(-1.2 * -2.4, rhs_x_lhs());
 }
+
+#if 0
+/// \fixme: Not Implemented Yet
+TEST(Mul, Double_Long)
+{
+  typedef DOUBLE(1, 2) lhs;
+  typedef Long<2> rhs;
+  typedef maths::mul<lhs, rhs>::type lhs_x_rhs;
+  typedef maths::mul<rhs, lhs>::type rhs_x_lhs;
+  ASSERT_FLOAT_EQ(1.2 * 2, lhs_x_rhs());
+  ASSERT_FLOAT_EQ(1.2 * 2, rhs_x_lhs());
+}
+#endif
