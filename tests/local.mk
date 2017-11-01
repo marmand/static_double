@@ -8,6 +8,7 @@ check_PROGRAMS += %reldir%/abs
 check_PROGRAMS += %reldir%/add
 check_PROGRAMS += %reldir%/convert
 check_PROGRAMS += %reldir%/digits
+check_PROGRAMS += %reldir%/div
 check_PROGRAMS += %reldir%/double
 check_PROGRAMS += %reldir%/eq
 check_PROGRAMS += %reldir%/max
