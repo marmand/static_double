@@ -15,6 +15,7 @@ check_PROGRAMS += %reldir%/max
 check_PROGRAMS += %reldir%/min
 check_PROGRAMS += %reldir%/mod
 check_PROGRAMS += %reldir%/mul
+check_PROGRAMS += %reldir%/pow
 check_PROGRAMS += %reldir%/shifted
 check_PROGRAMS += %reldir%/sub
 
