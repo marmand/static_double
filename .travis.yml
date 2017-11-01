@@ -5,4 +5,4 @@ os:
 compiler:
   - clang
   - gcc
-script: autoreconf -fvi && ./configure && make distcheck
+script: autoreconf -fvi && ./configure && make check
