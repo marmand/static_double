@@ -14,3 +14,19 @@ TEST(Pow, Long_nul)
   typedef maths::pow<lhs, rhs>::type result;
   ASSERT_EQ(std::pow(1, 0), result());
 }
+
+TEST(Pow, Long_one)
+{
+  typedef Long<0> lhs;
+  typedef Long<1> rhs;
+  typedef maths::pow<lhs, rhs>::type result;
+  ASSERT_EQ(std::pow(0, 1), result());
+}
+
+TEST(Pow, Long_neg)
+{
+  typedef Long<1> lhs;
+  typedef Long<-1> rhs;
+  typedef maths::pow<lhs, rhs>::type result;
+  ASSERT_EQ(std::pow(1, -1), result());
+}
