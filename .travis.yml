@@ -6,4 +6,4 @@ compiler:
   - clang
   - gcc
 # script: autoreconf -fvi && ./configure && make check
-script: echo $SHELL
+script: echo $SHELL && $SHELL --version
