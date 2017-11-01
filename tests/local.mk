@@ -1,31 +1,20 @@
 AM_LDFLAGS = ${GTEST_LIBS}
 AM_CXXFLAGS = ${PTHREAD_CFLAGS}
 
-check_PROGRAMS =        \
-abs                     \
-add                     \
-convert                 \
-digits                  \
-double                  \
-eq                      \
-max                     \
-min                     \
-mod                     \
-mul                     \
-shifted                 \
-sub
+# Defines that we'll compile only c++ sources
+AM_DEFAULT_SOURCE_EXT = .cc
 
-abs_SOURCES = %reldir%/abs.cc
-add_SOURCES = %reldir%/add.cc
-convert_SOURCES = %reldir%/convert.cc
-digits_SOURCES = %reldir%/digits.cc
-double_SOURCES = %reldir%/double.cc
-eq_SOURCES = %reldir%/eq.cc
-max_SOURCES = %reldir%/max.cc
-min_SOURCES = %reldir%/min.cc
-mod_SOURCES = %reldir%/mod.cc
-mul_SOURCES = %reldir%/mul.cc
-shifted_SOURCES = %reldir%/shifted.cc
-sub_SOURCES = %reldir%/sub.cc
+check_PROGRAMS += %reldir%/abs
+check_PROGRAMS += %reldir%/add
+check_PROGRAMS += %reldir%/convert
+check_PROGRAMS += %reldir%/digits
+check_PROGRAMS += %reldir%/double
+check_PROGRAMS += %reldir%/eq
+check_PROGRAMS += %reldir%/max
+check_PROGRAMS += %reldir%/min
+check_PROGRAMS += %reldir%/mod
+check_PROGRAMS += %reldir%/mul
+check_PROGRAMS += %reldir%/shifted
+check_PROGRAMS += %reldir%/sub
 
 TESTS = $(check_PROGRAMS)
