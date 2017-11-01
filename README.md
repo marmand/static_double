@@ -1,6 +1,8 @@
 Static Double
 =============
 
+[![Build Status](https://travis-ci.org/marmand/static_double.svg?branch=master)](https://travis-ci.org/marmand/static_double)
+
 This project is based on a simple idea that we don't currently have double
 computation at compile-time.
 
