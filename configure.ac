@@ -20,10 +20,23 @@ AM_PROG_AR
 
 # Checks for libraries.
 AX_PTHREAD()
-AC_CHECK_LIB([gtest_main],
-             [main],
-             [LIBS="-lgtest -lgtest_main $LIBS"],
-             [AC_MSG_ERROR([Missing gtest library, install libgtest-dev])])
+AS_TR_SH([gtest_save_CXXFLAGS])="$CXXFLAGS"
+AS_TR_SH([gtest_save_LIBS])="$LIBS"
+CXXFLAGS="$PTHREAD_CFLAGS $CXXFLAGS"
+LIBS="-lgtest_main -lgtest $LIBS"
+AC_LINK_IFELSE([AC_LANG_SOURCE(
+[[
+#include <gtest/gtest.h>
+
+TEST(Principal, basic)
+{
+  ASSERT_TRUE(true);
+}
+]])]
+, [AC_SUBST([GTEST_LIBS], ["-lgtest_main -lgtest"])]
+, [AC_MSG_FAILURE([Unable to link with gtest libraries])])
+CXXFLAGS=${AS_TR_SH([gtest_save_CXXFLAGS])}
+LIBS=${AS_TR_SH([gtest_save_LIBS])}
 
 # Checks for header files.
 AC_CHECK_HEADER([gtest/gtest.h],
