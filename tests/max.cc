@@ -47,11 +47,13 @@ TEST(Max, double_positives_rhs)
   ASSERT_EQ(3.14, result());
 }
 
+#if 0
+/// \fixme: max cannot give a result in case of a double equality
 TEST(Max, double_positives_both)
 {
   typedef DOUBLE(3, 14) lhs;
   typedef DOUBLE(3, 14) rhs;
-  /// \fixme: max cannot give a result in case of a double equality
-  // typedef maths::max<lhs, rhs>::type result;
-  // ASSERT_EQ(3.14, result());
+  typedef maths::max<lhs, rhs>::type result;
+  ASSERT_EQ(3.14, result());
 }
+#endif
