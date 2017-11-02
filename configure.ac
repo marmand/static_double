@@ -20,8 +20,8 @@ AM_PROG_AR
 
 # Checks for libraries.
 AX_PTHREAD()
-: ${gtest_save_CXXFLAGS="$CXXFLAGS"}
-: ${gtest_save_LIBS="$LIBS"}
+AS_TR_SH([gtest_save_CXXFLAGS])="$CXXFLAGS"
+AS_TR_SH([gtest_save_LIBS])="$LIBS"
 CXXFLAGS="$PTHREAD_CFLAGS $CXXFLAGS"
 LIBS="-lgtest_main -lgtest $LIBS"
 AC_LINK_IFELSE([AC_LANG_SOURCE(
@@ -35,8 +35,8 @@ TEST(Principal, basic)
 ]])]
 , [AC_SUBST([GTEST_LIBS], ["-lgtest_main -lgtest"])]
 , [AC_MSG_FAILURE([Unable to link with gtest libraries])])
-: ${CXXFLAGS="$gtest_save_CXXFLAGS"}
-: ${LIBS="$gtest_save_LIBS"}
+CXXFLAGS=${AS_TR_SH([gtest_save_CXXFLAGS])}
+LIBS=${AS_TR_SH([gtest_save_LIBS])}
 
 # Checks for header files.
 AC_CHECK_HEADER([gtest/gtest.h],
