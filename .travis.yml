@@ -12,9 +12,11 @@ install:
   - cd /usr/src/gtest
   - sudo cmake .
   - sudo make
+  - cd -
   - cd /usr/lib
   - sudo ln -s /usr/src/gtest/libgtest.a libgtest.a
   - sudo ln -s /usr/src/gtest/libgtest_main.a libgtest_main.a
+  - cd -
 
 os:
   - linux
