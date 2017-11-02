@@ -9,6 +9,12 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y libgtest-dev; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install autoconf-archive; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install libgtest-dev; fi
+  - cd /usr/src/gtest
+  - sudo cmake .
+  - sudo make
+  - cd /usr/lib
+  - sudo ln -s /usr/src/gtest/libgtest.a libgtest.a
+  - sudo ln -s /usr/src/gtest/libgtest_main.a libgtest_main.a
 
 os:
   - linux
