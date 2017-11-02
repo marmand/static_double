@@ -16,5 +16,5 @@ os:
 compiler:
   - clang
   - gcc
-script: autoreconf -fvi && ./configure && make check
+script: autoreconf -fvi && (./configure || cat config.log) && make check
 # script: echo $SHELL && $SHELL --version && autoconf --version && automake --version
