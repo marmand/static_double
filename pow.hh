@@ -17,4 +17,5 @@ namespace maths
 } /* maths */
 
 # include <long/pow.hh>
+# include <double/pow.hh>
 #endif /* !MATHS_POW_HH_ */
