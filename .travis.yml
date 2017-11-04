@@ -6,23 +6,9 @@ before_install:
 
 install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y autoconf-archive; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y libgtest-dev; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y g++; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y clang; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y cmake; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install autoconf-archive; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install libgtest-dev; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install g++; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install clang; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install cmake; fi
-  - cd /usr/src/gtest
-  - sudo cmake .
-  - sudo make
-  - cd -
-  - cd /usr/lib
-  - sudo ln -s /usr/src/gtest/libgtest.a libgtest.a
-  - sudo ln -s /usr/src/gtest/libgtest_main.a libgtest_main.a
-  - cd -
 
 os:
   - linux
