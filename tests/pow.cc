@@ -30,3 +30,11 @@ TEST(Pow, Long_neg)
   typedef maths::pow<lhs, rhs>::type result;
   ASSERT_EQ(std::pow(1, -1), result());
 }
+
+TEST(Pow, Double_Long_nul)
+{
+  typedef DOUBLE(1, 1) lhs;
+  typedef Long<0> rhs;
+  typedef maths::pow<lhs, rhs>::type result;
+  ASSERT_EQ(std::pow(1.1, 0), result());
+}
