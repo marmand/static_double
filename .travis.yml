@@ -8,7 +8,7 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y autoconf-archive; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y cmake; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install autoconf-archive; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install cmake; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install cmake || brew upgrade cmake; fi
 
 os:
   - linux
