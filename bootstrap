@@ -1,0 +1,12 @@
+#! /bin/bash
+
+set -ex
+
+autoreconf -fvi
+git submodule update --recursive --init
+pushd googletest
+mkdir -p _build
+cd _build
+cmake ..
+make
+popd

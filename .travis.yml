@@ -17,6 +17,6 @@ compiler:
   - clang
   - gcc
 script:
-  - autoreconf -fvi
+  - ./bootstrap
   - ./configure
   - make check
