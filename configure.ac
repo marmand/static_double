@@ -27,7 +27,7 @@ AS_TR_SH([gtest_save_LDFLAGS])="$LDFLAGS"
 CPPFLAGS="-I${srcdir}/googletest/googletest/include $CPPFLAGS"
 CXXFLAGS="$PTHREAD_CFLAGS $CXXFLAGS"
 LIBS="-lgtest_main -lgtest $LIBS"
-LDFLAGS="-L${srcdir}/googletest/_build/googlemock -L${srcdir}/googletest/_build/googlemock/gtest $LDFLAGS"
+LDFLAGS="-L${srcdir}/googletest/build/googlemock -L${srcdir}/googletest/build/googlemock/gtest $LDFLAGS"
 AC_LINK_IFELSE([AC_LANG_SOURCE(
 [[
 #include <gtest/gtest.h>
@@ -38,7 +38,7 @@ TEST(Principal, basic)
 }
 ]])]
 , [AC_SUBST([GTEST_LIBS], ["-lgtest_main -lgtest"])]dnl
-[AC_SUBST([GTEST_LDFLAGS], ["-L${srcdir}/googletest/_build/googlemock -L${srcdir}/googletest/_build/googlemock/gtest"])]
+[AC_SUBST([GTEST_LDFLAGS], ["-L${srcdir}/googletest/build/googlemock -L${srcdir}/googletest/build/googlemock/gtest"])]
 , [AC_MSG_FAILURE([Unable to link with gtest libraries])])
 CPPFLAGS=${AS_TR_SH([gtest_save_CPPFLAGS])}
 CXXFLAGS=${AS_TR_SH([gtest_save_CXXFLAGS])}
