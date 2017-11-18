@@ -9,8 +9,8 @@ computation at compile-time.
 As such, before knowing of constexpr, I started implementing a double
 computations at compile-time.
 
-Contributing
-------------
+Contribute
+----------
 
-As I'm currently only reseting bases of this project, I'll only take ideas and
-suggestions. But I plan on having a contributing plan soon.
+If you ever want to contribute to this project, you can join me on http://phabricator.leclercq.site where
+you'll gain access to my projects issue tracker/repository.
