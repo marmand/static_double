@@ -155,6 +155,22 @@ namespace maths
   {
     typedef DOUBLE(0, 0) type;
   };
+  /*!
+   * Fast special case shortcut
+   */
+  template
+  <
+    unsigned long m1
+    , unsigned long m2
+    , bool n1
+    , bool n2
+    , bool z1
+    , bool z2
+  >
+  struct mul<Double<0, 0, m1, n1, z1>, Double<0, 0, m2, n2, z2>>
+  {
+    typedef DOUBLE(0, 0) type;
+  };
 } /* maths */
 
 #endif /* !MATHS_DOUBLE_MUL_HH_ */

@@ -95,8 +95,6 @@ TEST(Mul, Long_nul_rhs)
   ASSERT_EQ(0, rhs_x_lhs());
 }
 
-#if 0
-/// \fixme: Partial specialization error
 TEST(Mul, Double_nuls)
 {
   typedef DOUBLE(0, 0) lhs;
@@ -106,7 +104,6 @@ TEST(Mul, Double_nuls)
   ASSERT_EQ(0, lhs_x_rhs());
   ASSERT_EQ(0, rhs_x_lhs());
 }
-#endif
 
 TEST(Mul, Double_nul_lhs)
 {
