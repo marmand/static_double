@@ -16,31 +16,31 @@ namespace maths
   {
     namespace pow_
     {
-      template <long v1, long v2, bool pos>
+      template <typename lhs, long v2, bool pos>
       struct impl {};
 
-      template <long v1, long v2>
-      struct impl<v1, v2, true>
+      template <typename lhs, long v2>
+      struct impl<lhs, v2, true>
       {
-        typedef typename mul<Long<v1>, typename pow<Long<v1>, Long<v2 - 1>>::type>::type type;
+        typedef typename mul<lhs, typename pow<lhs, Long<v2 - 1>>::type>::type type;
       };
 
-      template <long v1, long v2>
-      struct impl<v1, v2, false>
+      template <typename lhs, long v2>
+      struct impl<lhs, v2, false>
       {
-        typedef typename div<Long<1>, typename pow<Long<v1>, Long<-v2 - 1>>::type>::type type;
+        typedef typename div<Long<1>, typename pow<lhs, Long<-v2 - 1>>::type>::type type;
       };
     } /* pow_ */
   } /* long_ */
 
-  template <long v1, long v2>
-  struct pow<Long<v1>, Long<v2>>
-    : public long_::pow_::impl<v1, v2, 0 <= v2>
+  template <typename lhs, long v2>
+  struct pow<lhs, Long<v2>>
+    : public long_::pow_::impl<lhs, v2, 0 <= v2>
   {
   };
 
-  template <long v1>
-  struct pow<Long<v1>, Long<0>>
+  template <typename lhs>
+  struct pow<lhs, Long<0>>
   {
     typedef Long<1> type;
   };
