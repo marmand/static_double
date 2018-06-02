@@ -7,7 +7,7 @@
 
 #include <pow.hh>
 
-TEST(Pow, Long_nul)
+TEST(Pow, Long_Long_nul)
 {
   typedef Long<1> lhs;
   typedef Long<0> rhs;
@@ -15,7 +15,7 @@ TEST(Pow, Long_nul)
   ASSERT_EQ(std::pow(1, 0), result());
 }
 
-TEST(Pow, Long_one)
+TEST(Pow, Long_Long_one)
 {
   typedef Long<0> lhs;
   typedef Long<1> rhs;
@@ -23,10 +23,34 @@ TEST(Pow, Long_one)
   ASSERT_EQ(std::pow(0, 1), result());
 }
 
-TEST(Pow, Long_neg)
+TEST(Pow, Long_Long_neg)
 {
   typedef Long<1> lhs;
   typedef Long<-1> rhs;
   typedef maths::pow<lhs, rhs>::type result;
   ASSERT_EQ(std::pow(1, -1), result());
+}
+
+TEST(Pow, Double_Long_nul)
+{
+  typedef DOUBLE(1, 0) lhs;
+  typedef Long<0> rhs;
+  typedef maths::pow<lhs, rhs>::type result;
+  ASSERT_EQ(std::pow(1.0, 0), result());
+}
+
+TEST(Pow, Double_Long_one)
+{
+  typedef DOUBLE(0, 0) lhs;
+  typedef Long<1> rhs;
+  typedef maths::pow<lhs, rhs>::type result;
+  ASSERT_EQ(std::pow(0.0, 1), result());
+}
+
+TEST(Pow, Double_Long_neg)
+{
+  typedef DOUBLE(1, 0) lhs;
+  typedef Long<-1> rhs;
+  typedef maths::pow<lhs, rhs>::type result;
+  ASSERT_EQ(std::pow(1.0, -1), result());
 }
