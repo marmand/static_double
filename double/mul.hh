@@ -14,6 +14,7 @@
 # include <div.hh>
 # include <mod.hh>
 # include <pow.hh>
+# include <convert.hh>
 
 namespace maths
 {
@@ -104,6 +105,18 @@ namespace maths
     enum { Zero = Ent == 0 };
   public:
     typedef typename double_::mul_::impl<Double<Ent, Dec, Mult, Neg, Zero>, Neg>::type type;
+  };
+
+  template <typename lhs, long l>
+  struct mul<lhs, Long<l>>
+  {
+    typedef typename mul<lhs, typename convert<Long<l>>::type>::type type;
+  };
+
+  template <long l, typename rhs>
+  struct mul<Long<l>, rhs>
+  {
+    typedef typename mul<typename convert<Long<l>>::type, rhs>::type type;
   };
 
   /*!
