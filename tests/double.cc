@@ -47,6 +47,9 @@ TEST(Double, three_zero_one)
 {
   typedef DOUBLE(3, 01) value;
   ASSERT_EQ(3.01, value());
+  typedef SMALL_DOUBLE(3, 1, 1) other;
+  ASSERT_EQ(3.01, other());
+  ASSERT_EQ(value(), other());
 }
 
 TEST(Double, constants)
