@@ -16,4 +16,5 @@ TEST(Digits, base)
   ASSERT_EQ(1ul, DIGITS(4));
   ASSERT_EQ(1ul, DIGITS(9));
   ASSERT_EQ(2ul, DIGITS(10));
+  ASSERT_EQ(3ul, DIGITS(100));
 }
