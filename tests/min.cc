@@ -29,7 +29,7 @@ using MyTypes = ::testing::Types
                     , std::pair<Long<20>, Long<20>>
                     , std::pair<DOUBLE(3, 14), DOUBLE(1, 8)>
                     , std::pair<DOUBLE(1, 8), DOUBLE(3, 14)>
-/// \fixme: max cannot give a result in case of a double equality
+/// \fixme: min cannot give a result in case of a double equality
 //                     , std::pair<DOUBLE(3, 14), DOUBLE(3, 14)>
                   >;
 
