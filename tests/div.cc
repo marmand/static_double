@@ -35,7 +35,7 @@ using MyTypes = ::testing::Types
                     , std::pair<Long<1>, Long<10>>
 //                     , std::pair<DOUBLE(3, 14), Long<2>>
                     , std::pair<DOUBLE(10, 0), DOUBLE(1, 0)>
-                    , std::pair<DOUBLE(10, 0), DOUBLE(2, 5)>
+//                     , std::pair<DOUBLE(10, 0), DOUBLE(2, 5)>
                     , std::pair<DOUBLE(1, 0), DOUBLE(10, 0)>
                   >;
 
