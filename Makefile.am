@@ -2,7 +2,7 @@ bin_PROGRAMS =
 lib_LTLIBRARIES =
 
 check_PROGRAMS =
-nobase_include_HEADERS =
+nobase_pkginclude_HEADERS =
 
 ACLOCAL_AMFLAGS = -I m4
 
