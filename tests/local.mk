@@ -18,6 +18,12 @@ ${builddir}/_googletest/googlemock/gtest/libgtest.a: ${builddir}/_googletest/Mak
 ${builddir}/_googletest/googlemock/gtest/libgtest_main.a: ${builddir}/_googletest/Makefile
 	${CMAKE} --build ${builddir}/_googletest -- gtest_main
 
+clean-local: clean-local-check
+.PHONY: clean-local-check
+clean-local-check:
+	-rm -rf _googletest
+	-rm -rf googletest
+
 # Defines that we'll compile only c++ sources
 AM_DEFAULT_SOURCE_EXT = .cc
 
