@@ -24,8 +24,19 @@ protected:
 
 using MyTypes = ::testing::Types
                   <
+//                      The division by 0 must not compile
+//                     std::pair<Long<10>, Long<0>>
+//                     , std::pair<DOUBLE(1, 0), DOUBLE(0, 0)>
+//                     ,
                     std::pair<Long<10>, Long<1>>
                     , std::pair<Long<10>, Long<2>>
+                    , std::pair<Long<10>, Long<5>>
+                    , std::pair<Long<100>, Long<10>>
+                    , std::pair<Long<1>, Long<10>>
+//                     , std::pair<DOUBLE(3, 14), Long<2>>
+                    , std::pair<DOUBLE(10, 0), DOUBLE(1, 0)>
+                    , std::pair<DOUBLE(10, 0), DOUBLE(2, 5)>
+                    , std::pair<DOUBLE(1, 0), DOUBLE(10, 0)>
                   >;
 
 TYPED_TEST_CASE(DivTest, MyTypes);
