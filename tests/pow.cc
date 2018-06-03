@@ -3,54 +3,39 @@
  * \file: pow.cc
  * \date: Wed 01 Nov 2017 12:36:38 PM UTC
  */
-#include <gtest/gtest.h>
-
 #include <pow.hh>
 
-TEST(Pow, Long_Long_nul)
-{
-  typedef Long<1> lhs;
-  typedef Long<0> rhs;
-  typedef maths::pow<lhs, rhs>::type result;
-  ASSERT_EQ(std::pow(1, 0), result());
-}
+#include <gtest/gtest.h>
 
-TEST(Pow, Long_Long_one)
-{
-  typedef Long<0> lhs;
-  typedef Long<1> rhs;
-  typedef maths::pow<lhs, rhs>::type result;
-  ASSERT_EQ(std::pow(0, 1), result());
-}
+#include <cmath>
 
-TEST(Pow, Long_Long_neg)
+// T must be a std::pair
+template <typename T>
+class PowTest: public ::testing::Test
 {
-  typedef Long<1> lhs;
-  typedef Long<-1> rhs;
-  typedef maths::pow<lhs, rhs>::type result;
-  ASSERT_EQ(std::pow(1, -1), result());
-}
+  using lhs = typename T::first_type;
+  using rhs = typename T::second_type;
+  using result = typename maths::pow<lhs, rhs>::type;
+protected:
+  lhs lhs_;
+  rhs rhs_;
+  result result_;
+}; // class PowTest
 
-TEST(Pow, Double_Long_nul)
-{
-  typedef DOUBLE(1, 0) lhs;
-  typedef Long<0> rhs;
-  typedef maths::pow<lhs, rhs>::type result;
-  ASSERT_EQ(std::pow(1.0, 0), result());
-}
+using MyTypes = ::testing::Types
+                  <
+                    std::pair<Long<1>, Long<0>>
+                    , std::pair<Long<0>, Long<1>>
+                    , std::pair<Long<1>, Long<-1>>
+                    , std::pair<DOUBLE(1, 0), Long<0>>
+                    , std::pair<DOUBLE(0, 0), Long<0>>
+                    , std::pair<DOUBLE(1, 0), Long<-1>>
+                  >;
 
-TEST(Pow, Double_Long_one)
-{
-  typedef DOUBLE(0, 0) lhs;
-  typedef Long<1> rhs;
-  typedef maths::pow<lhs, rhs>::type result;
-  ASSERT_EQ(std::pow(0.0, 1), result());
-}
+TYPED_TEST_CASE(PowTest, MyTypes);
 
-TEST(Pow, Double_Long_neg)
+TYPED_TEST(PowTest, Pow)
 {
-  typedef DOUBLE(1, 0) lhs;
-  typedef Long<-1> rhs;
-  typedef maths::pow<lhs, rhs>::type result;
-  ASSERT_EQ(std::pow(1.0, -1), result());
+  ASSERT_DOUBLE_EQ((std::pow(this->lhs_ + 0, this->rhs_ + 0))
+                   , this->result_);
 }
