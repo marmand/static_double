@@ -23,6 +23,7 @@ protected:
 using MyTypes = ::testing::Types
                   <
                     std::pair<Long<20>, Long<10>>
+                    , std::pair<DOUBLE(1, 2), DOUBLE(0, 2)>
                   >;
 
 TYPED_TEST_CASE(SubTest, MyTypes);
