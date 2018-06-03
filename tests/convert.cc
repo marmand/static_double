@@ -3,20 +3,31 @@
  * \file: convert.cc
  * \date: Fri 27 Oct 2017 05:58:32 AM UTC
  */
-#include <gtest/gtest.h>
-
 #include <convert.hh>
 
-TEST(Convert, double_to_long)
-{
-  typedef DOUBLE(3, 0) lhs;
-  typedef maths::convert<lhs>::type result;
-  ASSERT_EQ(3, result());
-}
+#include <gtest/gtest.h>
 
-TEST(Convert, long_to_double)
+// T must be a std::pair
+template <typename T>
+class ConvertTest: public ::testing::Test
 {
-  typedef Long<3> lhs;
-  typedef maths::convert<lhs>::type result;
-  ASSERT_FLOAT_EQ(3.0, result());
+  using expected = typename T::first_type;
+  using result = typename T::second_type;
+protected:
+  expected expected_;
+  result result_;
+}; // class ConvertTest
+
+using MyTypes = ::testing::Types
+                  <
+                  // Expected, Result
+                  std::pair<Long<3>, DOUBLE(3, 0)>
+                  , std::pair<DOUBLE(3, 0), Long<3>>
+                  >;
+
+TYPED_TEST_CASE(ConvertTest, MyTypes);
+
+TYPED_TEST(ConvertTest, Convert)
+{
+  ASSERT_EQ(this->expected_, this->result_);
 }
