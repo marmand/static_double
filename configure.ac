@@ -18,41 +18,20 @@ AC_LANG_PUSH([C++])
 AC_PROG_CXX
 AM_PROG_AR
 
-# Checks for libraries.
 AX_PTHREAD()
-AS_TR_SH([gtest_save_CPPFLAGS])="$CPPFLAGS"
-AS_TR_SH([gtest_save_CXXFLAGS])="$CXXFLAGS"
-AS_TR_SH([gtest_save_LIBS])="$LIBS"
-AS_TR_SH([gtest_save_LDFLAGS])="$LDFLAGS"
-CPPFLAGS="-I${srcdir}/googletest/googletest/include $CPPFLAGS"
-CXXFLAGS="$PTHREAD_CFLAGS $CXXFLAGS"
-LIBS="-lgtest_main -lgtest $LIBS"
-LDFLAGS="-L${srcdir}/googletest/_build/googlemock -L${srcdir}/googletest/_build/googlemock/gtest $LDFLAGS"
-AC_LINK_IFELSE([AC_LANG_SOURCE(
-[[
-#include <gtest/gtest.h>
+# For testing purpose
+AC_PROG_MKDIR_P
+AC_CHECK_PROGS([GIT], [git], [:])
+if test "$GIT" = :
+then
+  AC_MSG_ERROR([This package needs git])
+fi
 
-TEST(Principal, basic)
-{
-  ASSERT_TRUE(true);
-}
-]])]
-, [AC_SUBST([GTEST_LIBS], ["-lgtest_main -lgtest"])]dnl
-[AC_SUBST([GTEST_LDFLAGS], ["-L${srcdir}/googletest/_build/googlemock -L${srcdir}/googletest/_build/googlemock/gtest"])]
-, [AC_MSG_FAILURE([Unable to link with gtest libraries])])
-CPPFLAGS=${AS_TR_SH([gtest_save_CPPFLAGS])}
-CXXFLAGS=${AS_TR_SH([gtest_save_CXXFLAGS])}
-LIBS=${AS_TR_SH([gtest_save_LIBS])}
-LDFLAGS=${AS_TR_SH([gtest_save_LDFLAGS])}
-
-# Checks for header files.
-AS_TR_SH([gtest_save_CPPFLAGS])="$CPPFLAGS"
-CPPFLAGS="-I${srcdir}/googletest/googletest/include $CPPFLAGS"
-AC_CHECK_HEADER([gtest/gtest.h],
-                [AC_DEFINE([HAVE_GTEST], [1], [Define to 1 if you have <gtest/gtest.h>.])]dnl
-                [AC_SUBST([GTEST_CPPFLAGS], ["-I${srcdir}/googletest/googletest/include"])],
-                [AC_MSG_ERROR([Missing gtest.h, install google test library])])
-CPPFLAGS=${AS_TR_SH([gtest_save_CPPFLAGS])}
+AC_CHECK_PROGS([CMAKE], [cmake], [:])
+if test "$CMAKE" = :
+then
+  AC_MSG_ERROR([This package needs cmake])
+fi
 
 # Checks for typedefs, structures, and compiler characteristics.
 AX_CXX_COMPILE_STDCXX_11([noext])

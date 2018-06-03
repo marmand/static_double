@@ -1,7 +1,21 @@
-AM_LDFLAGS = ${GTEST_LDFLAGS}
-LIBS = ${GTEST_LIBS}
+LDADD  =
+LDADD += ${builddir}/_googletest/googlemock/gtest/libgtest_main.a
+LDADD += ${builddir}/_googletest/googlemock/gtest/libgtest.a
+LDADD += ${PTHREAD_LIBS}
 AM_CXXFLAGS = ${PTHREAD_CFLAGS}
-AM_CPPFLAGS = ${GTEST_CPPFLAGS}
+
+${builddir}/googletest:
+	${GIT} clone https://github.com/google/googletest.git ${builddir}/googletest
+
+${builddir}/_googletest/Makefile: ${builddir}/googletest
+	${MKDIR_P} ${builddir}/_googletest
+	cd ${builddir}/_googletest && ${CMAKE} ${builddir}/../googletest
+
+${builddir}/_googletest/googlemock/gtest/libgtest.a: ${builddir}/_googletest/Makefile
+	${CMAKE} --build ${builddir}/_googletest -- gtest
+
+${builddir}/_googletest/googlemock/gtest/libgtest_main.a: ${builddir}/_googletest/Makefile
+	${CMAKE} --build ${builddir}/_googletest -- gtest_main
 
 # Defines that we'll compile only c++ sources
 AM_DEFAULT_SOURCE_EXT = .cc
