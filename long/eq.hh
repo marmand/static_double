@@ -12,8 +12,8 @@ namespace maths
 {
   template <long v>
   struct eq<Long<v>, Long<v>>
+    : public std::true_type
   {
-    enum { value = true };
   };
 } /* maths */
 

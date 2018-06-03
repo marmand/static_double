@@ -7,18 +7,18 @@
 #ifndef MATHS_EQ_HH_
 # define MATHS_EQ_HH_
 
+# include <type_traits>
+
 namespace maths
 {
   /*!
    * \brief Represent the equality operation
-   * \todo Create a logical namespace in which put boolean representation
    * \todo Make compare by usable for eq
    * \todo Create logical testsuite
    */
   template <typename lhs, typename rhs>
-  struct eq
+  struct eq : public std::false_type
   {
-    enum { value = false };
   };
 } /* maths */
 

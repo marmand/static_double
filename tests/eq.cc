@@ -16,12 +16,12 @@ class EqTest: public ::testing::Test
   using expected = typename std::tuple_element<0, T>::type;
   using lhs = typename std::tuple_element<1, T>::type;
   using rhs = typename std::tuple_element<2, T>::type;
-  // FIXME: should eq return a type
-  using result = typename maths::eq<lhs, rhs>;
+  using result = typename maths::eq<lhs, rhs>::type;
 protected:
   expected expected_;
   lhs lhs_;
   rhs rhs_;
+  result result_;
 }; // class EqTest
 
 using MyTypes = ::testing::Types
@@ -35,9 +35,9 @@ TYPED_TEST_CASE(EqTest, MyTypes);
 TYPED_TEST(EqTest, Eq)
 {
   if(this->expected_)
-    ASSERT_TRUE(result::value);
+    ASSERT_TRUE(this->result_);
   else
-    ASSERT_FALSE(result::value);
+    ASSERT_FALSE(this->result_);
 }
 
 TEST(Eq, long_equals)

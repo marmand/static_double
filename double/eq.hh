@@ -19,8 +19,8 @@ namespace maths
     , bool z
   >
   struct eq<Double<e, d, m, n, z>, Double<e, d, m, n, z>>
+    : public std::true_type
   {
-    enum { value = true };
   };
 } /* maths */
 
