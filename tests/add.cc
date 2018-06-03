@@ -3,14 +3,33 @@
  * \file: add.cc
  * \date: Mon 30 Oct 2017 07:51:15 AM UTC
  */
-#include <gtest/gtest.h>
-
 #include <add.hh>
 
-TEST(Add, Positives)
+#include <gtest/gtest.h>
+
+#include <utility>
+
+// T must be a std::pair
+template <typename T>
+class AddTest: public ::testing::Test
 {
-  typedef Long<10> lhs;
-  typedef Long<20> rhs;
-  typedef maths::add<lhs, rhs>::type result;
-  ASSERT_EQ(30, result());
+  using lhs = typename T::first_type;
+  using rhs = typename T::second_type;
+  using result = typename maths::add<lhs, rhs>::type;
+protected:
+  lhs lhs_;
+  rhs rhs_;
+  result result_;
+}; // class AddTest
+
+using MyTypes = ::testing::Types
+                  <
+                    std::pair<Long<10>, Long<20>>
+                  >;
+
+TYPED_TEST_CASE(AddTest, MyTypes);
+
+TYPED_TEST(AddTest, Add)
+{
+  ASSERT_EQ(this->lhs_ + this->rhs_, this->result_);
 }
