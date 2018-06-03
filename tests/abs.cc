@@ -3,11 +3,11 @@
  * \file: abs.cc
  * \date: Thu 26 Oct 2017 08:32:43 PM UTC
  */
-#include <cmath>
+#include <abs.hh>
 
 #include <gtest/gtest.h>
 
-#include <abs.hh>
+#include <cmath>
 
 template <typename T>
 class AbsTest: public ::testing::Test
@@ -29,7 +29,7 @@ using MyTypes = ::testing::Types
 
 TYPED_TEST_CASE(AbsTest, MyTypes);
 
-TYPED_TEST(AbsTest, Div)
+TYPED_TEST(AbsTest, Abs)
 {
   ASSERT_EQ(std::abs(this->lhs_), this->result_);
 }
