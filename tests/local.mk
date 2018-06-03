@@ -3,6 +3,7 @@ LDADD += ${builddir}/_googletest/googlemock/gtest/libgtest_main.a
 LDADD += ${builddir}/_googletest/googlemock/gtest/libgtest.a
 LDADD += ${PTHREAD_LIBS}
 AM_CXXFLAGS = ${PTHREAD_CFLAGS}
+AM_CPPFLAGS = -I ${builddir}/_googletest/googletest/include
 
 ${builddir}/googletest:
 	${GIT} clone https://github.com/google/googletest.git ${builddir}/googletest
