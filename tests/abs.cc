@@ -3,34 +3,33 @@
  * \file: abs.cc
  * \date: Thu 26 Oct 2017 08:32:43 PM UTC
  */
+#include <cmath>
+
 #include <gtest/gtest.h>
 
 #include <abs.hh>
 
-TEST(Abs, long_positive)
+template <typename T>
+class AbsTest: public ::testing::Test
 {
-  typedef Long<10> lhs;
-  typedef maths::abs<lhs>::type result;
-  ASSERT_EQ(10, result());
-}
+  using lhs = T;
+  using result = typename maths::abs<lhs>::type;
+protected:
+  lhs lhs_;
+  result result_;
+}; // class AbsTest
 
-TEST(Abs, long_negative)
-{
-  typedef Long<-10> lhs;
-  typedef maths::abs<lhs>::type result;
-  ASSERT_EQ(10, result());
-}
+using MyTypes = ::testing::Types
+                  <
+                    Long<10>
+                    , Long<-10>
+                    , DOUBLE(1, 12)
+                    , DOUBLE(-1, 12)
+                  >;
 
-TEST(Abs, double_positive)
-{
-  typedef DOUBLE(1, 12) lhs;
-  typedef maths::abs<lhs>::type result;
-  ASSERT_EQ(1.12, result());
-}
+TYPED_TEST_CASE(AbsTest, MyTypes);
 
-TEST(Abs, double_negative)
+TYPED_TEST(AbsTest, Div)
 {
-  typedef DOUBLE(-1, 12) lhs;
-  typedef maths::abs<lhs>::type result;
-  ASSERT_EQ(1.12, result());
+  ASSERT_EQ(std::abs(this->lhs_), this->result_);
 }
