@@ -20,4 +20,3 @@ script:
   - autoreconf -fvi
   - ./configure
   - make check
-  - make distcheck
