@@ -3,57 +3,40 @@
  * \file: max.cc
  * \date: Thu 26 Oct 2017 08:39:13 PM UTC
  */
-#include <gtest/gtest.h>
-
 #include <max.hh>
 
-TEST(Max, long_positives_lhs)
-{
-  typedef Long<20> lhs;
-  typedef Long<10> rhs;
-  typedef maths::max<lhs, rhs>::type result;
-  ASSERT_EQ(20, result());
-}
+#include <gtest/gtest.h>
 
-TEST(Max, long_positives_rhs)
-{
-  typedef Long<10> lhs;
-  typedef Long<20> rhs;
-  typedef maths::max<lhs, rhs>::type result;
-  ASSERT_EQ(20, result());
-}
+#include <algorithm>
 
-TEST(Max, long_positives_both)
+// T must be a std::pair
+template <typename T>
+class MaxTest: public ::testing::Test
 {
-  typedef Long<20> lhs;
-  typedef Long<20> rhs;
-  typedef maths::max<lhs, rhs>::type result;
-  ASSERT_EQ(20, result());
-}
+  using lhs = typename T::first_type;
+  using rhs = typename T::second_type;
+  using result = typename maths::max<lhs, rhs>::type;
+protected:
+  lhs lhs_;
+  rhs rhs_;
+  result result_;
+}; // class MaxTest
 
-TEST(Max, double_positives_lhs)
-{
-  typedef DOUBLE(3, 14) lhs;
-  typedef DOUBLE(1, 8) rhs;
-  typedef maths::max<lhs, rhs>::type result;
-  ASSERT_EQ(3.14, result());
-}
-
-TEST(Max, double_positives_rhs)
-{
-  typedef DOUBLE(1, 8) lhs;
-  typedef DOUBLE(3, 14) rhs;
-  typedef maths::max<lhs, rhs>::type result;
-  ASSERT_EQ(3.14, result());
-}
-
-#if 0
+using MyTypes = ::testing::Types
+                  <
+                    std::pair<Long<10>, Long<20>>
+                    , std::pair<Long<20>, Long<10>>
+                    , std::pair<Long<20>, Long<20>>
+                    , std::pair<DOUBLE(3, 14), DOUBLE(1, 8)>
+                    , std::pair<DOUBLE(1, 8), DOUBLE(3, 14)>
 /// \fixme: max cannot give a result in case of a double equality
-TEST(Max, double_positives_both)
+//                     , std::pair<DOUBLE(3, 14), DOUBLE(3, 14)>
+                  >;
+
+TYPED_TEST_CASE(MaxTest, MyTypes);
+
+TYPED_TEST(MaxTest, Max)
 {
-  typedef DOUBLE(3, 14) lhs;
-  typedef DOUBLE(3, 14) rhs;
-  typedef maths::max<lhs, rhs>::type result;
-  ASSERT_EQ(3.14, result());
+  // +0 forces the type to an integral one
+  ASSERT_EQ((std::max(this->lhs_ + 0, this->rhs_ + 0)), this->result_);
 }
-#endif
