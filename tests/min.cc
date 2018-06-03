@@ -3,57 +3,40 @@
  * \file: min.cc
  * \date: Sun 29 Oct 2017 09:30:46 PM UTC
  */
-#include <gtest/gtest.h>
-
 #include <min.hh>
 
-TEST(Min, long_positives_rhs)
-{
-  typedef Long<20> lhs;
-  typedef Long<10> rhs;
-  typedef maths::min<lhs, rhs>::type result;
-  ASSERT_EQ(10, result());
-}
+#include <gtest/gtest.h>
 
-TEST(Min, long_positives_lhs)
-{
-  typedef Long<10> lhs;
-  typedef Long<20> rhs;
-  typedef maths::min<lhs, rhs>::type result;
-  ASSERT_EQ(10, result());
-}
+#include <algorithm>
 
-TEST(Min, long_positives_both)
+// T must be a std::pair
+template <typename T>
+class MinTest: public ::testing::Test
 {
-  typedef Long<20> lhs;
-  typedef Long<20> rhs;
-  typedef maths::min<lhs, rhs>::type result;
-  ASSERT_EQ(20, result());
-}
+  using lhs = typename T::first_type;
+  using rhs = typename T::second_type;
+  using result = typename maths::min<lhs, rhs>::type;
+protected:
+  lhs lhs_;
+  rhs rhs_;
+  result result_;
+}; // class MinTest
 
-TEST(Min, double_positives_rhs)
-{
-  typedef DOUBLE(3, 14) lhs;
-  typedef DOUBLE(1, 8) rhs;
-  typedef maths::min<lhs, rhs>::type result;
-  ASSERT_EQ(1.8, result());
-}
+using MyTypes = ::testing::Types
+                  <
+                    std::pair<Long<10>, Long<20>>
+                    , std::pair<Long<20>, Long<10>>
+                    , std::pair<Long<20>, Long<20>>
+                    , std::pair<DOUBLE(3, 14), DOUBLE(1, 8)>
+                    , std::pair<DOUBLE(1, 8), DOUBLE(3, 14)>
+/// \fixme: max cannot give a result in case of a double equality
+//                     , std::pair<DOUBLE(3, 14), DOUBLE(3, 14)>
+                  >;
 
-TEST(Min, double_positives_lhs)
-{
-  typedef DOUBLE(1, 8) lhs;
-  typedef DOUBLE(3, 14) rhs;
-  typedef maths::min<lhs, rhs>::type result;
-  ASSERT_EQ(1.8, result());
-}
+TYPED_TEST_CASE(MinTest, MyTypes);
 
-#if 0
-/// \fixme: min cannot give a result in case of a double equality
-TEST(Min, double_positives_both)
+TYPED_TEST(MinTest, Min)
 {
-  typedef DOUBLE(3, 14) lhs;
-  typedef DOUBLE(3, 14) rhs;
-  typedef maths::min<lhs, rhs>::type result;
-  ASSERT_EQ(3.14, result());
+  // +0 forces the type to an integral one
+  ASSERT_EQ((std::min(this->lhs_ + 0, this->rhs_ + 0)), this->result_);
 }
-#endif
