@@ -32,7 +32,7 @@ using MyTypes = ::testing::Types
                     , std::tuple<std::false_type, DOUBLE(3, 124), DOUBLE(2, 212)>
                   >;
 
-TYPED_TEST_CASE(EqTest, MyTypes);
+TYPED_TEST_SUITE(EqTest, MyTypes, );
 
 TYPED_TEST(EqTest, Eq)
 {

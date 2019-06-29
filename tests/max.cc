@@ -33,7 +33,7 @@ using MyTypes = ::testing::Types
 //                     , std::pair<DOUBLE(3, 14), DOUBLE(3, 14)>
                   >;
 
-TYPED_TEST_CASE(MaxTest, MyTypes);
+TYPED_TEST_SUITE(MaxTest, MyTypes, );
 
 TYPED_TEST(MaxTest, Max)
 {

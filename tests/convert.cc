@@ -25,7 +25,7 @@ using MyTypes = ::testing::Types
                   , std::pair<DOUBLE(3, 0), Long<3>>
                   >;
 
-TYPED_TEST_CASE(ConvertTest, MyTypes);
+TYPED_TEST_SUITE(ConvertTest, MyTypes, );
 
 TYPED_TEST(ConvertTest, Convert)
 {

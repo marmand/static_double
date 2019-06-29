@@ -27,7 +27,7 @@ using MyTypes = ::testing::Types
                     , std::pair<Long<10>, Long<3>>
                   >;
 
-TYPED_TEST_CASE(ModTest, MyTypes);
+TYPED_TEST_SUITE(ModTest, MyTypes, );
 
 TYPED_TEST(ModTest, Mod)
 {

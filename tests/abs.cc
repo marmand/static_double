@@ -36,7 +36,7 @@ using MyTypes = ::testing::Types
                     , DOUBLE(-1, 12)
                   >;
 
-TYPED_TEST_CASE(AbsTest, MyTypes);
+TYPED_TEST_SUITE(AbsTest, MyTypes, );
 
 TYPED_TEST(AbsTest, Abs)
 {

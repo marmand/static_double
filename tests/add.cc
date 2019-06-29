@@ -27,7 +27,7 @@ using MyTypes = ::testing::Types
                     std::pair<Long<10>, Long<20>>
                   >;
 
-TYPED_TEST_CASE(AddTest, MyTypes);
+TYPED_TEST_SUITE(AddTest, MyTypes, );
 
 TYPED_TEST(AddTest, Add)
 {

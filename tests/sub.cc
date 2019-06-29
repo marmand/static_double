@@ -26,7 +26,7 @@ using MyTypes = ::testing::Types
                     , std::pair<DOUBLE(1, 2), DOUBLE(0, 2)>
                   >;
 
-TYPED_TEST_CASE(SubTest, MyTypes);
+TYPED_TEST_SUITE(SubTest, MyTypes, );
 
 TYPED_TEST(SubTest, Sub)
 {

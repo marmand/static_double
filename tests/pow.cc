@@ -32,7 +32,7 @@ using MyTypes = ::testing::Types
                     , std::pair<DOUBLE(1, 0), Long<-1>>
                   >;
 
-TYPED_TEST_CASE(PowTest, MyTypes);
+TYPED_TEST_SUITE(PowTest, MyTypes, );
 
 TYPED_TEST(PowTest, Pow)
 {

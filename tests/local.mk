@@ -1,6 +1,6 @@
 LDADD  =
-LDADD += ${builddir}/_googletest/googlemock/gtest/libgtest_main.a
-LDADD += ${builddir}/_googletest/googlemock/gtest/libgtest.a
+LDADD += ${builddir}/_googletest/lib/libgtest_main.a
+LDADD += ${builddir}/_googletest/lib/libgtest.a
 LDADD += ${PTHREAD_LIBS}
 AM_CXXFLAGS = ${PTHREAD_CFLAGS}
 AM_CPPFLAGS = -I ${builddir}/googletest/googletest/include
@@ -12,11 +12,13 @@ ${builddir}/_googletest/Makefile: ${builddir}/googletest
 	${MKDIR_P} ${builddir}/_googletest
 	cd ${builddir}/_googletest && ${CMAKE} ${builddir}/../googletest
 
-${builddir}/_googletest/googlemock/gtest/libgtest.a: ${builddir}/_googletest/Makefile
+${builddir}/_googletest/lib/libgtest.a: ${builddir}/_googletest/Makefile
 	${CMAKE} --build ${builddir}/_googletest -- gtest
+	touch $@ # Correct CMake file date handling
 
-${builddir}/_googletest/googlemock/gtest/libgtest_main.a: ${builddir}/_googletest/Makefile
+${builddir}/_googletest/lib/libgtest_main.a: ${builddir}/_googletest/Makefile
 	${CMAKE} --build ${builddir}/_googletest -- gtest_main
+	touch $@ # Correct CMake file date handling
 
 clean-local: clean-local-check
 .PHONY: clean-local-check

@@ -39,7 +39,7 @@ using MyTypes = ::testing::Types
                     , std::pair<DOUBLE(-2, 4), DOUBLE(-1, 2)>
                   >;
 
-TYPED_TEST_CASE(MulTest, MyTypes);
+TYPED_TEST_SUITE(MulTest, MyTypes, );
 
 TYPED_TEST(MulTest, Mul)
 {
