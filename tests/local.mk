@@ -57,5 +57,7 @@ check_PROGRAMS += %reldir%/shifted
 %reldir%/shifted.$(OBJEXT): ${builddir}/googletest
 check_PROGRAMS += %reldir%/sub
 %reldir%/sub.$(OBJEXT): ${builddir}/googletest
+check_PROGRAMS += %reldir%/exp
+%reldir%/exp.$(OBJEXT): ${builddir}/googletest
 
 TESTS = $(check_PROGRAMS)

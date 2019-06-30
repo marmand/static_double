@@ -30,6 +30,8 @@ using MyTypes = ::testing::Types
                     , std::pair<DOUBLE(1, 0), Long<0>>
                     , std::pair<DOUBLE(0, 0), Long<0>>
                     , std::pair<DOUBLE(1, 0), Long<-1>>
+                    , std::pair<maths::e, Long<1>>
+                    , std::pair<maths::pi, Long<1>>
                   >;
 
 TYPED_TEST_SUITE(PowTest, MyTypes, );

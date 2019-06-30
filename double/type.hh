@@ -58,9 +58,11 @@ struct Double
 namespace maths
 {
   // e from math.h M_E
-  typedef DOUBLE(2, 7182818284590452354) e;
+  // typedef DOUBLE(2, 7182818284590452354) e;
+  typedef DOUBLE(2, 718281828459045) e;
   // pi from math.h M_PI
-  typedef DOUBLE(3, 1415926535897932385) pi;
+  // typedef DOUBLE(3, 1415926535897932385) pi;
+  typedef DOUBLE(3, 141592653589793) pi;
 } /* maths */
 
 #endif /* !DOUBLE_TYPE_HH_ */
