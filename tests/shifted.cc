@@ -71,6 +71,19 @@ TEST(Shifted, Double_Pi)
   }
 }
 
+TEST(Shifted, SmallDouble)
+{
+  {
+    // PI = 3.1415, representing here 3.0005
+    // 3 + 0.5 * 10E-3
+    // Can see 3 as the number of zeros before the 5
+    typedef SMALL_DOUBLE(3, 5, 3) pi_parts;
+    typedef maths::shifted<pi_parts>::type result;
+    ASSERT_EQ(30005, result());
+    ASSERT_EQ(4, maths::shifted<pi_parts>::Recursion);
+  }
+}
+
 TEST(Shifted, Negative_Double)
 {
   {
