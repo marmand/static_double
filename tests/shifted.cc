@@ -49,21 +49,25 @@ TEST(Shifted, Double_Pi)
     typedef DOUBLE(3, 14) pi;
     typedef maths::shifted<pi>::type result;
     ASSERT_EQ(314, result());
+    ASSERT_EQ(2, maths::shifted<pi>::Recursion);
   }
   {
     typedef DOUBLE(31, 4) pi;
     typedef maths::shifted<pi>::type result;
     ASSERT_EQ(314, result());
+    ASSERT_EQ(1, maths::shifted<pi>::Recursion);
   }
   {
     typedef DOUBLE(314, 0) pi;
     typedef maths::shifted<pi>::type result;
     ASSERT_EQ(314, result());
+    ASSERT_EQ(0, maths::shifted<pi>::Recursion);
   }
   {
     typedef DOUBLE(314, 00) pi;
     typedef maths::shifted<pi>::type result;
     ASSERT_EQ(314, result());
+    ASSERT_EQ(0, maths::shifted<pi>::Recursion);
   }
 }
 
@@ -73,5 +77,6 @@ TEST(Shifted, Negative_Double)
     typedef DOUBLE(-2, 12) lhs;
     typedef maths::shifted<lhs>::type result;
     ASSERT_EQ(-212, result());
+    ASSERT_EQ(2, maths::shifted<lhs>::Recursion);
   }
 }
