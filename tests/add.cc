@@ -25,6 +25,8 @@ protected:
 using MyTypes = ::testing::Types
                   <
                     std::pair<Long<10>, Long<20>>
+                    , std::pair<DOUBLE(1, 2), DOUBLE(1, 2)>
+                    , std::pair<DOUBLE(1, 2), DOUBLE(-1, 2)>
                   >;
 
 TYPED_TEST_SUITE(AddTest, MyTypes, );

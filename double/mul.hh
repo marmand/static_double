@@ -89,18 +89,6 @@ namespace maths
     >::type type;
   };
 
-  template <typename lhs, long l>
-  struct mul<lhs, Long<l>>
-  {
-    typedef typename mul<lhs, typename convert<Long<l>>::type>::type type;
-  };
-
-  template <long l, typename rhs>
-  struct mul<Long<l>, rhs>
-  {
-    typedef typename mul<typename convert<Long<l>>::type, rhs>::type type;
-  };
-
   /*!
    * Fast special case shortcut
    */
