@@ -24,7 +24,11 @@ protected:
 
 using MyTypes = ::testing::Types
                   <
-                    std::pair<Long<10>, Long<20>>
+                    std::pair<Long<0>, Long<1>>
+                    , std::pair<Long<1>, Long<0>>
+                    , std::pair<Long<10>, Long<20>>
+                    // , std::pair<DOUBLE(1, 2), Long<1>>
+                    // , std::pair<Long<1>, DOUBLE(1, 2)>
                     , std::pair<DOUBLE(1, 2), DOUBLE(1, 2)>
                     , std::pair<DOUBLE(1, 2), DOUBLE(-1, 2)>
                   >;
