@@ -15,6 +15,7 @@
 # include <mod.hh>
 # include <pow.hh>
 # include <convert.hh>
+# include <compare.hh>
 
 namespace maths
 {
@@ -22,33 +23,6 @@ namespace maths
   {
     namespace mul_
     {
-      template <typename T, bool neg>
-      struct impl {};
-
-      template
-      <
-        long e
-        , unsigned long d
-        , unsigned long m
-        , bool n
-        , bool z
-      >
-      struct impl<Double<e, d, m, n, z>, true>
-      {
-        typedef Double<-e, d, m, n, z> type;
-      };
-      template
-      <
-        long e
-        , unsigned long d
-        , unsigned long m
-        , bool n
-        , bool z
-      >
-      struct impl<Double<e, d, m, n, z>, false>
-      {
-        typedef Double<e, d, m, n, z> type;
-      };
     } /* mul_ */
   } /* double_ */
   template
@@ -104,7 +78,15 @@ namespace maths
     enum { Neg = n1 ^ n2};
     enum { Zero = Ent == 0 };
   public:
-    typedef typename double_::mul_::impl<Double<Ent, Dec, Mult, Neg, Zero>, Neg>::type type;
+    typedef typename maths::compare
+    <
+      Double<Ent, Dec, Mult, Neg, Zero>
+      , Double <-Ent, Dec, Mult, Neg, Zero>
+      , !Neg
+      , Neg
+      , !Neg
+      , Neg
+    >::type type;
   };
 
   template <typename lhs, long l>
