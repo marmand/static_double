@@ -35,7 +35,12 @@ using MyTypes = ::testing::Types
 
 TYPED_TEST_SUITE(AddTest, MyTypes, );
 
-TYPED_TEST(AddTest, Add)
+TYPED_TEST(AddTest, LongAdd)
 {
   ASSERT_EQ(this->lhs_ + this->rhs_, this->result_);
+}
+
+TYPED_TEST(AddTest, DoubleAdd)
+{
+  ASSERT_FLOAT_EQ(this->lhs_ + this->rhs_, this->result_);
 }

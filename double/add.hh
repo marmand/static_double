@@ -27,15 +27,17 @@ namespace maths
        *
        * \code
          if (m1 < m2)
-           d = d1 * 10 ^ |m1 - m2| + d2;
+           d = ±d1 * 10 ^ |m1 - m2| + ±d2;
          else
-           d = d1 + d2 * 10 ^ |m1 - m2|;
+           d = ±d1 + ±d2 * 10 ^ |m1 - m2|;
          \endcode
        *
        */
       template
       <
-        unsigned long d1
+        bool neg1
+        , bool neg2
+        , unsigned long d1
         , unsigned long d2
         , unsigned long m1
         , unsigned long m2
@@ -45,44 +47,48 @@ namespace maths
 
       template
       <
-        unsigned long d1
+        bool neg1
+        , bool neg2
+        , unsigned long d1
         , unsigned long d2
         , unsigned long m1
         , unsigned long m2
       >
-      struct d<d1, d2, m1, m2, true>
+      struct d<neg1, neg2, d1, d2, m1, m2, true>
       {
         typedef typename maths::add
                 <
                   typename maths::mul
                   <
-                    Long<d1>
+                    Long<neg1 ? -d1 : d1>
                     , typename maths::pow
                       <
                         Long<10>
                         , typename maths::abs<typename maths::sub<Long<m1>, Long<m2>>::type>::type
                       >::type
                   >::type
-                  , Long<d2>
+                  , Long<neg2 ? -d2 : d2>
                 >::type
                 type;
       };
 
       template
       <
-        unsigned long d1
+        bool neg1
+        , bool neg2
+        , unsigned long d1
         , unsigned long d2
         , unsigned long m1
         , unsigned long m2
       >
-      struct d<d1, d2, m1, m2, false>
+      struct d<neg1, neg2, d1, d2, m1, m2, false>
       {
         typedef typename maths::add
                 <
-                  Long<d1>
+                  Long<neg1 ? -d1 : d1>
                   , typename maths::mul
                     <
-                      Long<d2>
+                      Long<neg2 ? -d2 : d2>
                       , typename maths::pow
                         <
                           Long<10>
@@ -112,7 +118,7 @@ namespace maths
   {
   private:
     enum { Mult = maths::max<Long<m1>, Long<m2>>::type::value };
-    enum { D = double_::add_::d<d1, d2, m1, m2, m1 < m2>::type::value };
+    enum { D = double_::add_::d<e1 < 0, e2 < 0, d1, d2, m1, m2, m1 < m2>::type::value };
     /// Ent = e1 + e2 + d/(10 ^ Mult);
     enum { Ent = maths::add<typename maths::add<Long<e1>, Long<e2>>::type
                             , typename maths::div
