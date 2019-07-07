@@ -22,25 +22,45 @@ protected:
   result result_;
 }; // class AddTest
 
-using MyTypes = ::testing::Types
+template <typename T>
+class LongAddTest : public AddTest<T>
+{
+};
+
+template <typename T>
+class DoubleAddTest : public AddTest<T>
+{
+};
+
+using LongTypes = ::testing::Types
                   <
                     std::pair<Long<0>, Long<1>>
                     , std::pair<Long<1>, Long<0>>
                     , std::pair<Long<10>, Long<20>>
-                    // , std::pair<DOUBLE(1, 2), Long<1>>
-                    // , std::pair<Long<1>, DOUBLE(1, 2)>
-                    , std::pair<DOUBLE(1, 2), DOUBLE(1, 2)>
-                    , std::pair<DOUBLE(1, 2), DOUBLE(-1, 2)>
                   >;
+TYPED_TEST_SUITE(LongAddTest, LongTypes, );
 
-TYPED_TEST_SUITE(AddTest, MyTypes, );
+using DoubleTypes = ::testing::Types
+                    <
+                      std::pair<DOUBLE(0, 0), DOUBLE(1, 0)>
+                      , std::pair<DOUBLE(1, 2), Long<1>>
+                      , std::pair<DOUBLE(1, 2), Long<-1>>
+                      , std::pair<Long<1>, DOUBLE(1, 2)>
+                      , std::pair<Long<-1>, DOUBLE(1, 2)>
+                      , std::pair<DOUBLE(1, 2), DOUBLE(1, 2)>
+                      , std::pair<DOUBLE(1, 2), DOUBLE(-1, 2)>
+                      , std::pair<maths::pi, maths::pi>
+                      , std::pair<maths::e, maths::e>
+                      , std::pair<maths::pi, maths::e>
+                    >;
+TYPED_TEST_SUITE(DoubleAddTest, DoubleTypes, );
 
-TYPED_TEST(AddTest, LongAdd)
+TYPED_TEST(LongAddTest, Add)
 {
   ASSERT_EQ(this->lhs_ + this->rhs_, this->result_);
 }
 
-TYPED_TEST(AddTest, DoubleAdd)
+TYPED_TEST(DoubleAddTest, Add)
 {
   ASSERT_FLOAT_EQ(this->lhs_ + this->rhs_, this->result_);
 }
