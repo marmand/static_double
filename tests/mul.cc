@@ -31,6 +31,7 @@ using MyTypes = ::testing::Types
                     // , std::pair<Long<2718281828459045>, Long<200>>
                     , std::pair<DOUBLE(1, 2), Long<2>>
                     , std::pair<DOUBLE(1, 2), Long<4>>
+                    , std::pair<DOUBLE(-1, 2), Long<1>>
                     , std::pair<DOUBLE(-1, 2), Long<2>>
                     // , std::pair<DOUBLE(1, 2), Long<-2>>
                     // , std::pair<DOUBLE(-1, 2), Long<-2>>

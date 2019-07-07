@@ -49,6 +49,7 @@ using DoubleTypes = ::testing::Types
                       , std::pair<Long<-1>, DOUBLE(1, 2)>
                       , std::pair<DOUBLE(1, 2), DOUBLE(1, 2)>
                       , std::pair<DOUBLE(1, 2), DOUBLE(-1, 2)>
+                      , std::pair<DOUBLE(-1, 2), DOUBLE(-1, 2)>
                       , std::pair<maths::pi, maths::pi>
                       , std::pair<maths::e, maths::e>
                       , std::pair<maths::pi, maths::e>
