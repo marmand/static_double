@@ -135,6 +135,35 @@ namespace maths
   public:
     typedef Double<Ent, Dec, Mult, Neg, Zero> type;
   };
+
+  template
+  <
+    long e
+    , unsigned long d
+    , unsigned long m
+    , bool n
+    , bool z
+    , long l
+  >
+  struct add<Double<e, d, m, n, z>, Long<l>>
+  {
+    typedef Double<e + l, d, m, n, z> type;
+  };
+
+  template
+  <
+    long e
+    , unsigned long d
+    , unsigned long m
+    , bool n
+    , bool z
+    , long l
+  >
+  struct add<Long<l>, Double<e, d, m, n, z>>
+  {
+    typedef Double<l + e, d, m, n, z> type;
+  };
+
 } /* maths */
 
 #endif /* !MATHS_DOUBLE_ADD_HH_ */
