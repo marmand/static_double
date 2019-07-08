@@ -23,7 +23,9 @@ namespace maths
     {
       template
       <
-        unsigned long d1
+        bool neg1
+        , bool neg2
+        , unsigned long d1
         , unsigned long d2
         , unsigned long m1
         , unsigned long m2
@@ -34,66 +36,81 @@ namespace maths
 
       template
       <
-        unsigned long d1
+        bool neg1
+        , bool neg2
+        , unsigned long d1
         , unsigned long d2
         , unsigned long m1
         , unsigned long m2
         , unsigned long Mult
       >
-      struct d<d1, d2, m1, m2, Mult, true>
+      struct d<neg1, neg2, d1, d2, m1, m2, Mult, true>
       {
-        typedef typename maths::sub
-                <
-                  typename maths::add
+        typedef
+        typename maths::abs
+        <
+          typename maths::sub
+          <
+            typename maths::add
+            <
+              typename maths::mul
+              <
+                Long<neg1 ? -d1 : d1>
+                , typename maths::pow
                   <
-                    typename maths::mul
-                    <
-                      Long<d1>
-                      , typename maths::pow
-                        <
-                          Long<10>
-                          , typename maths::abs<typename maths::sub<Long<m1>, Long<m2>>::type>::type
-                        >::type
-                    >::type
-                    , typename maths::pow<Long<10>, Long<Mult>>::type
+                    Long<10>
+                    , typename maths::abs<typename maths::sub<Long<m1>, Long<m2>>::type>::type
                   >::type
-                  , Long<d2>
-                >::type
-                type;
+              >::type
+              , typename maths::pow<Long<10>, Long<Mult>>::type
+            >::type
+            , Long<neg2 ? -d2 : d2>
+          >::type
+        >::type
+        type;
       };
 
       template
       <
-        unsigned long d1
+        bool neg1
+        , bool neg2
+        , unsigned long d1
         , unsigned long d2
         , unsigned long m1
         , unsigned long m2
         , unsigned long Mult
       >
-      struct d<d1, d2, m1, m2, Mult, false>
+      struct d<neg1, neg2, d1, d2, m1, m2, Mult, false>
       {
-        typedef typename maths::sub
-                <
-                  typename maths::add
+        typedef
+        typename maths::abs
+        <
+          typename maths::sub
+          <
+            typename maths::add
+            <
+              Long<neg1 ? -d1 : d1>
+              , typename maths::pow<Long<10>, Long<Mult>>::type
+            >::type
+            , typename maths::mul
+              <
+                Long<neg2 ? -d2 : d2>
+                , typename maths::pow
                   <
-                    Long<d1>
-                    , typename maths::pow<Long<10>, Long<Mult>>::type
-                  >::type
-                  , typename maths::mul
-                    <
-                      Long<d2>
-                      , typename maths::pow
+                    Long<10>
+                    , typename maths::abs
+                      <
+                        typename maths::sub
                         <
-                          Long<10>
-                          , typename maths::abs<typename maths::sub
-                                                <
-                                                  Long<m1>
-                                                  , Long<m2>
-                                                >::type>::type
+                          Long<m1>
+                          , Long<m2>
                         >::type
-                    >::type
-                >::type
-                type;
+                      >::type
+                  >::type
+              >::type
+          >::type
+        >::type
+        type;
       };
 
       template <typename lhs, typename rhs>
@@ -116,7 +133,7 @@ namespace maths
       {
       private:
         enum { Mult = maths::max<Long<m1>, Long<m2>>::type::value };
-        enum { D = d<d1, d2, m1, m2, Mult, m1 < m2>::type::value };
+        enum { D = d<e1 < 0, e2 < 0, d1, d2, m1, m2, Mult, m1 < m2>::type::value };
         enum { Dec = maths::mod<Long<D>, typename maths::pow<Long<10>, Long<Mult>>::type>::type::value };
         enum { Ent = maths::add
                      <
@@ -128,8 +145,8 @@ namespace maths
                        , typename maths::div<Long<D>, typename maths::pow<Long<10>, Long<Mult>>::type>::type
                      >::type::value
              };
-        enum { Neg = 0 };
-        enum { Zero = 0 };
+        enum { Neg = Ent < 0 };
+        enum { Zero = Ent == 0 && Dec == 0};
       public:
         typedef Double<Ent, Dec, Mult, Neg, Zero> type;
       };
