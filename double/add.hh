@@ -27,9 +27,9 @@ namespace maths
        *
        * \code
          if (m1 < m2)
-           d = ±d1 * 10 ^ |m1 - m2| + ±d2;
+           d = | ±d1 * 10 ^ |m1 - m2| + ±d2 | ;
          else
-           d = ±d1 + ±d2 * 10 ^ |m1 - m2|;
+           d = | ±d1 + ±d2 * 10 ^ |m1 - m2| |;
          \endcode
        *
        */
@@ -56,20 +56,24 @@ namespace maths
       >
       struct d<neg1, neg2, d1, d2, m1, m2, true>
       {
-        typedef typename maths::add
+        typedef
+        typename maths::abs
+        <
+          typename maths::add
+          <
+            typename maths::mul
+            <
+              Long<neg1 ? -d1 : d1>
+              , typename maths::pow
                 <
-                  typename maths::mul
-                  <
-                    Long<neg1 ? -d1 : d1>
-                    , typename maths::pow
-                      <
-                        Long<10>
-                        , typename maths::abs<typename maths::sub<Long<m1>, Long<m2>>::type>::type
-                      >::type
-                  >::type
-                  , Long<neg2 ? -d2 : d2>
+                  Long<10>
+                    , typename maths::abs<typename maths::sub<Long<m1>, Long<m2>>::type>::type
                 >::type
-                type;
+              >::type
+            , Long<neg2 ? -d2 : d2>
+          >::type
+        >::type
+        type;
       };
 
       template
@@ -83,24 +87,27 @@ namespace maths
       >
       struct d<neg1, neg2, d1, d2, m1, m2, false>
       {
-        typedef typename maths::add
-                <
-                  Long<neg1 ? -d1 : d1>
-                  , typename maths::mul
-                    <
-                      Long<neg2 ? -d2 : d2>
-                      , typename maths::pow
-                        <
-                          Long<10>
-                          , typename maths::abs<typename maths::sub<Long<m1>, Long<m2>>::type>::type
-                        >::type
-                    >::type
-                >::type
-                type;
+        typedef
+        typename maths::abs
+        <
+          typename maths::add
+          <
+            Long<neg1 ? -d1 : d1>
+            , typename maths::mul
+              <
+                Long<neg2 ? -d2 : d2>
+                , typename maths::pow
+                  <
+                    Long<10>
+                    , typename maths::abs<typename maths::sub<Long<m1>, Long<m2>>::type>::type
+                  >::type
+              >::type
+          >::type
+        >::type
+        type;
       };
     } /* add_ */
   } /* double_ */
-  /// \todo Check If add doesn't break n and z meanings.
   template
   <
     long e1
@@ -128,10 +135,10 @@ namespace maths
                               >::type
                             >::type::value
          };
-    /// Dec = d % (10 ^ Mult);
+    /// Dec = d % (10 ^ Mult)
     enum { Dec = maths::mod<Long<D>, typename maths::pow<Long<10>, Long<Mult>>::type>::type::value };
-    enum { Neg = 0 };
-    enum { Zero = 0 };
+    enum { Neg = Ent < 0 };
+    enum { Zero = Ent == 0 && Dec == 0};
   public:
     typedef Double<Ent, Dec, Mult, Neg, Zero> type;
   };
