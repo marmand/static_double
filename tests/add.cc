@@ -37,12 +37,14 @@ using LongTypes = ::testing::Types
                     std::pair<Long<0>, Long<1>>
                     , std::pair<Long<1>, Long<0>>
                     , std::pair<Long<10>, Long<20>>
+                    , std::pair<Long<20>, Long<10>>
                   >;
 TYPED_TEST_SUITE(LongAddTest, LongTypes, );
 
 using DoubleTypes = ::testing::Types
                     <
                       std::pair<DOUBLE(0, 0), DOUBLE(1, 0)>
+                      , std::pair<DOUBLE(1, 2), DOUBLE(0, 2)>
                       , std::pair<DOUBLE(1, 2), Long<1>>
                       , std::pair<DOUBLE(1, 2), Long<-1>>
                       , std::pair<Long<1>, DOUBLE(1, 2)>
@@ -63,5 +65,5 @@ TYPED_TEST(LongAddTest, Add)
 
 TYPED_TEST(DoubleAddTest, Add)
 {
-  ASSERT_FLOAT_EQ(this->lhs_ + this->rhs_, this->result_);
+  ASSERT_DOUBLE_EQ(this->lhs_ + this->rhs_, this->result_);
 }

@@ -20,15 +20,48 @@ protected:
   result result_;
 }; // class SubTest
 
-using MyTypes = ::testing::Types
+template <typename T>
+class LongSubTest : public SubTest<T>
+{
+};
+
+template <typename T>
+class DoubleSubTest : public SubTest<T>
+{
+};
+
+using LongTypes = ::testing::Types
                   <
-                    std::pair<Long<20>, Long<10>>
-                    , std::pair<DOUBLE(1, 2), DOUBLE(0, 2)>
+                    std::pair<Long<0>, Long<1>>
+                    , std::pair<Long<1>, Long<0>>
+                    , std::pair<Long<10>, Long<20>>
+                    , std::pair<Long<20>, Long<10>>
                   >;
+TYPED_TEST_SUITE(LongSubTest, LongTypes, );
 
-TYPED_TEST_SUITE(SubTest, MyTypes, );
+using DoubleTypes = ::testing::Types
+                    <
+                      std::pair<DOUBLE(0, 0), DOUBLE(1, 0)>
+                      , std::pair<DOUBLE(1, 2), DOUBLE(0, 2)>
+                      , std::pair<DOUBLE(1, 2), Long<1>>
+                      , std::pair<DOUBLE(1, 2), Long<-1>>
+                      , std::pair<Long<1>, DOUBLE(1, 2)>
+                      , std::pair<Long<-1>, DOUBLE(1, 2)>
+                      , std::pair<DOUBLE(1, 2), DOUBLE(1, 2)>
+                      , std::pair<DOUBLE(1, 2), DOUBLE(-1, 2)>
+                      , std::pair<DOUBLE(-1, 2), DOUBLE(-1, 2)>
+                      , std::pair<maths::pi, maths::pi>
+                      , std::pair<maths::e, maths::e>
+                      , std::pair<maths::pi, maths::e>
+                    >;
+TYPED_TEST_SUITE(DoubleSubTest, DoubleTypes, );
 
-TYPED_TEST(SubTest, Sub)
+TYPED_TEST(LongSubTest, Sub)
 {
   ASSERT_EQ(this->lhs_ - this->rhs_, this->result_);
+}
+
+TYPED_TEST(DoubleSubTest, Sub)
+{
+  ASSERT_DOUBLE_EQ(this->lhs_ - this->rhs_, this->result_);
 }
