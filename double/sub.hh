@@ -209,7 +209,15 @@ namespace maths
     , bool z2
   >
   struct sub<Double<e1, d1, m1, n1, z1>, Double<e2, d2, m2, n2, z2>>
-    : public double_::sub_::impl<Double<e1, d1, m1, n1, z1>, Double<e2, d2, m2, n2, z2>, e1 < e2>
+    : public double_::sub_::impl
+      <
+        Double<e1, d1, m1, n1, z1>
+        , Double<e2, d2, m2, n2, z2>
+        /// \todo Create an operator that tells you which one is the min/max
+        , e1 != e2
+          ? e1 < e2
+          : (n1 ? -d1 : d1)  < (n2 ? -d2 : d2)
+      >
   {
   };
 
