@@ -14,6 +14,7 @@
 # include <div.hh>
 # include <mod.hh>
 # include <pow.hh>
+# include <convert.hh>
 
 namespace maths
 {
@@ -210,6 +211,46 @@ namespace maths
   struct sub<Double<e1, d1, m1, n1, z1>, Double<e2, d2, m2, n2, z2>>
     : public double_::sub_::impl<Double<e1, d1, m1, n1, z1>, Double<e2, d2, m2, n2, z2>, e1 < e2>
   {
+  };
+
+  template
+  <
+    long e
+    , unsigned long d
+    , unsigned long m
+    , bool n
+    , bool z
+    , long l
+  >
+  struct sub<Double<e, d, m, n, z>, Long<l>>
+  {
+    typedef
+    typename maths::sub
+    <
+      Double<e, d, m, n, z>
+      , typename maths::convert<Long<l>>::type
+    >::type
+    type;
+  };
+
+  template
+  <
+    long e
+    , unsigned long d
+    , unsigned long m
+    , bool n
+    , bool z
+    , long l
+  >
+  struct sub<Long<l>, Double<e, d, m, n, z>>
+  {
+    typedef
+    typename maths::sub
+    <
+      typename maths::convert<Long<l>>::type
+      , Double<e, d, m, n, z>
+    >::type
+    type;
   };
 } /* maths */
 
