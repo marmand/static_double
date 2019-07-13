@@ -23,6 +23,25 @@ namespace maths
   {
     namespace mul_
     {
+      template <e1, e2, d1, d2, bool zero>
+      struct impl {};
+
+      template <e1, e2, d1, d2>
+      struct impl<true>
+      {
+        typedef
+        typename maths::add
+        <
+          typename maths::mul<e1, e2>::type
+          , typename impl<e1, e2, d1, d2, d1 == 0 && d2 == 0>::type
+        >::type
+        type;
+      };
+
+      template <>
+      struct impl<false>
+      {
+      };
     } /* mul_ */
   } /* double_ */
   template

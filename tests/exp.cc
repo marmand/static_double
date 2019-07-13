@@ -23,7 +23,7 @@ using MyTypes = ::testing::Types
                 <
                   Long<0>
                   , Long<1>
-                  // , Long<2>
+                  , Long<2>
                   // , Long<3>
                   // , Long<4>
                 >;
